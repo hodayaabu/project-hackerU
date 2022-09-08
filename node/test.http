@@ -48,6 +48,15 @@ DELETE  {{local}}/users/deleteUser
 admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTUyOTM4MDVjZDMzNjRiN2E4MTYiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyMjc2OTA5fQ.wJkvQJXTHbdmjfgbbBY05K54BDNWrVbHle6J0fDWzYM
 user-id: 631454cc3805cd3364b7a80d
 
+
+### Forgot pwd:
+PATCH  {{{local}}}/users/forgotPassword
+Content-Type: application/json
+
+{
+    "email": "hodaya1abu@gmail.com"
+}
+
 //Cards//
 
 ### Get all cards:

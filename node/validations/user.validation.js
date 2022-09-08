@@ -19,6 +19,7 @@ function validateUpdateUser(user) {
         city: Joi.string().min(4).max(54),
         email: Joi.string().min(9).max(225).email(),
         phone: Joi.string().min(9).max(13),
+        password: Joi.string().min(8).max(225)
     });
 
     return schema.validate(user);
@@ -32,4 +33,12 @@ function validateUpdatePwd(pwd) {
     return schema.validate(pwd);
 }
 
-module.exports = { validateUser, validateUpdateUser, validateUpdatePwd };
+function validateUpdateForgotPwd(email) {
+    const schema = Joi.object({
+        email: Joi.string().min(9).max(225).email().required(),
+    });
+
+    return schema.validate(email);
+}
+
+module.exports = { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd };
