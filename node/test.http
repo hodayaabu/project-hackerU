@@ -32,7 +32,7 @@ Content-Type: application/json
 
 ### Get user by token:
 GET {{local}}/users/me
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTQyMDM4MDVjZDMzNjRiN2E4MDQiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTY2MjI3NjY1M30.Jx2Af-TIDFPxyV4zCl9cWSaNvxhnCaCKmdPBJQoCFxk
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
 
 ### Update user by email:
 PATCH {{local}}/users/update
@@ -40,7 +40,7 @@ user-email: hodaya@gmail.com
 Content-Type: application/json
 
 {
-    "admin": true
+    "city": "Tel Aviv"
 }
 
 ### Delete user by id:
@@ -65,13 +65,13 @@ GET {{local}}/cards/allCards
 
 ### Add new card:
 POST {{local}}/cards
-user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTUyOTM4MDVjZDMzNjRiN2E4MTYiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyMjc2OTA5fQ.wJkvQJXTHbdmjfgbbBY05K54BDNWrVbHle6J0fDWzYM
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
 Content-Type: application/json
 
 {
     "image": "https://img.yad2.co.il/Pic/202208/29/3_2/o/y2_1_04819_20220829151457.jpeg?l=5&c=1&w=1024&h=768",
     "description": "very good", 
-    "price": 600,
+    "price": "600",
     "productType": "Watches"
 }
 
@@ -83,18 +83,19 @@ id-card: 630b335ba895014c972e4e5d
 
 ### Update card by id:
 PATCH  {{local}}/cards/myCard
-id-card: 62f37a1e656a3d4f6dadb3f3
+id-card: 6314693a7c62e0ae1f664fed
 user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmJkNWMxYzdiYjYyODYxNjhhZmIzYzciLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJpYXQiOjE2NTY1NzkxMDJ9.HLkM4NL6HgUVhvIK6ivK1LJHlGHASeDoe4BI8FCvYrI
 Content-Type: application/json
 
 {
-    "rating": 4
+   "image": "https://img.yad2.co.il/Pic/202202/07/3_0/o/y2_1_07458_20220207045916.jpeg?l=5&c=1&w=1024&h=768",
+    "price":"890"
 }
 
 
 ### Dalate card by id:
 DELETE  {{local}}/cards/myCard
-id-card: 62d7cb17e2558896f2fee811
+id-card: 63146beb7c62e0ae1f665012
 user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
 
 

@@ -7,6 +7,11 @@ const Profile = () => {
     const [editing, setEditing] = useState(false);
     const [user, setUser] = useState({});
 
+    const { name, city, phone, email } = user;
+    const [updatedName, setUpdateName] = useState('');
+    const [updatedCity, setUpdateCity] = useState('');
+    const [updatedPhone, setUpdatePhone] = useState('');
+
     useEffect(() => {
         axios.get('/users/me')
             .then((response) => {
@@ -14,16 +19,7 @@ const Profile = () => {
             })
     }, []);
 
-    const [updatedName, setUpdateName] = useState(user.name);
-    const [updatedGender, setUpdateGender] = useState(user.gender);
-    const [updatedAge, setUpdateAge] = useState(user.age);
-    const [updatedCity, setUpdateCity] = useState(user.city);
-    const [updatedPhone, setUpdatePhone] = useState(user.phone);
 
-    const style = {
-        width: "8%",
-        borderRadius: "50%"
-    }
 
     let viewMode = {};
     let editMode = {};
@@ -41,7 +37,7 @@ const Profile = () => {
     const handleBtnUpdate = (e) => {
         e.preventDefault();
 
-        axios.patch('/users/update', { name: updatedName, gender: updatedGender, age: updatedAge, city: updatedCity, phone: updatedPhone }, { headers: { 'user-email': user.email } })
+        axios.patch('/users/update', { name: updatedName, city: updatedCity, phone: updatedPhone }, { headers: { 'user-email': user.email } })
             .then((response) => {
                 setUser(response.data);
                 toast('you updated your profile successfully');
@@ -65,14 +61,11 @@ const Profile = () => {
     return (
         <div className="card" >
             <div className="col" onDoubleClick={handleEditing} style={viewMode}>
-                <img className="userPic" src={user.image} style={style} alt="User pic" />
-                <h5 className="card-title">{user.name}</h5>
+                <h5 className="card-title">{name}</h5>
                 <div className="card-body">
-                    <p className="card-text">{user.gender}</p>
-                    <p className="card-text">{user.age}</p>
-                    <p className="card-text">{user.city}</p>
-                    <p className="card-text">{user.email}</p>
-                    <p className="card-text">{user.phone}</p>
+                    <p className="card-text">{city}</p>
+                    <p className="card-text">{email}</p>
+                    <p className="card-text">{phone}</p>
                 </div>
             </div>
 
@@ -83,24 +76,6 @@ const Profile = () => {
                     style={editMode}
                     value={updatedName}
                     onChange={(e) => setUpdateName(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>Gender:</label>
-                <input
-                    type="text"
-                    style={editMode}
-                    value={updatedGender}
-                    onChange={(e) => setUpdateGender(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>Age:</label>
-                <input
-                    type="text"
-                    style={editMode}
-                    value={updatedAge}
-                    onChange={(e) => setUpdateAge(e.target.value)}
                 />
                 <br />
                 <br />

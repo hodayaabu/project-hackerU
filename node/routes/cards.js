@@ -12,7 +12,7 @@ router.get('/allCards', async (req, res) => {
 
         const allCards = await Card.find();
 
-        if (!allCards) {
+        if (allCards.length < 1) {
             res.status(400).send('Sorry, there are no registered cards yet');
             return;
         }
@@ -25,6 +25,7 @@ router.get('/allCards', async (req, res) => {
     }
 });
 
+
 //Add new card:
 router.post('/', auth, async (req, res) => {
     try {
@@ -36,7 +37,7 @@ router.post('/', auth, async (req, res) => {
             res.status(400).send(error.details[0].message);
             return;
         }
-        const user = await User.findById(req.user._id);
+        const user = await User.findOne({ _id: req.user._id });
 
         const card = new Card({
             userId: req.user._id,
@@ -47,12 +48,13 @@ router.post('/', auth, async (req, res) => {
         });
 
         await card.save();
-        const myAllCards = await Card.find({ userId: req.user._id });
+        const myAllCards = await Card.find({ userId: user._id });
 
         res.send(myAllCards);
 
     } catch (err) {
-        res.status(401).json({ err });
+        console.log('err from add new card:', err);
+        res.status(401).send(err);
     }
 });
 

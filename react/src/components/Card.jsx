@@ -62,6 +62,7 @@ const Card = (props) => {
 
 
                             <div className="modal-footer">
+                                Created at: {props.creationDate}
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <DeleteItem onDelete={props.onDelete} id={props.id} />
                             </div>
