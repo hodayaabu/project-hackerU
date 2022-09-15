@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Card from "../../components/Card";
 
-const MyCards = () => {
+const MyProducts = () => {
     const [cardsArr, setCardsArr] = useState([]);
 
     useEffect(() => {
@@ -59,7 +59,7 @@ const MyCards = () => {
 
     return (
         <>
-            <h3>My Cards</h3>
+            <h3>My Products</h3>
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 {cardsArr.map((item) => {
                     return (
@@ -83,4 +83,4 @@ const MyCards = () => {
     )
 };
 
-export default MyCards;
+export default MyProducts;

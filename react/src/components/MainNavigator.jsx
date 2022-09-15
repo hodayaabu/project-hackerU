@@ -1,13 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "axios";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { adminActions } from "../store/admin.redux";
 
-const Navigator = () => {
+const MainNavigator = () => {
     const loggedIn = useSelector((state) => state.auth.loggedIn);
     const isAdmin = useSelector((state) => state.admin.isAdmin);
 
@@ -73,16 +71,16 @@ const Navigator = () => {
                         </NavLink>
                         <ul className="dropdown-menu">
                             <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
-                            <li><NavLink className="dropdown-item" to="/myCards">My Cards</NavLink></li>
-                            <li><NavLink className="dropdown-item" to="/favoriteCards">Favorite Cards</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/myProducts">My Products</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/favoriteProducts">Favorite Products</NavLink></li>
                         </ul>
                     </li>
 
                     <li className="nav-item active">
-                        <NavLink className="nav-link" to="/cards" exact>Cards</NavLink>
+                        <NavLink className="nav-link" to="/products" exact>Products</NavLink>
                     </li>
                     <li className="nav-item active">
-                        <NavLink className="nav-link" to="/addCard" exact>Add Card</NavLink>
+                        <NavLink className="nav-link" to="/addProduct" exact>Add Product</NavLink>
                     </li>
 
                     <li className="nav-item active">
@@ -105,4 +103,4 @@ const Navigator = () => {
     )
 }
 
-export default Navigator;
+export default MainNavigator;

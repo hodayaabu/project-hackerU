@@ -106,9 +106,9 @@ router.patch('/myCard', auth, async (req, res) => {
             return;
         }
 
-        const allCards = await Card.find();
+        const myAllCards = await Card.find({ userId: req.user._id });
 
-        res.send(allCards);
+        res.send(myAllCards);
     } catch (err) {
         console.log('err from update-card:', err);
         res.status(401).json({ err })
@@ -163,6 +163,23 @@ router.get('/myAllCards', auth, async (req, res) => {
         res.send(myAllCards);
     } catch (err) {
         console.log('err from get my all cards:', err);
+        res.status(401).json({ err });
+    }
+});
+
+//Get all cards by type:
+router.get('/:type', async (req, res) => {
+    try {
+        const sportCards = await Card.find({ productType: req.params.type });
+
+        if (sportCards.length < 1) {
+            res.status(404).send(`Sorry, we did not find any cards under ${req.params.type} category`);
+            return;
+        }
+
+        res.send(sportCards);
+    } catch (err) {
+        console.log('err from get my all cards by type:', err);
         res.status(401).json({ err });
     }
 });

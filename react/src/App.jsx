@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { ToastContainer } from "react-toastify";
 
 //Components
-import Navigator from './components/Navigator';
+import MainNavigator from './components/MainNavigator';
 import Footer from "./components/Footer";
 
 //Guards
@@ -16,18 +16,23 @@ import Logout from "./pages/Logout";
 import UpdatePwd from "./pages/UpdatePwd";
 import Signup from "./pages/Signup";
 import Home from './pages/Home';
-import AllCards from "./pages/Cards/AllCards";
-import MyCards from "./pages/Cards/MyCards";
-import AddCard from "./pages/Cards/AddCard";
+import AllProducts from "./pages/Products/AllProducts";
+import MyProducts from "./pages/Products/MyProducts";
+import AddProduct from "./pages/Products/AddProduct";
+import Sport from "./pages/Products/Types/Sport";
+import Electronics from "./pages/Products/Types/Electronics";
+import Fashion from "./pages/Products/Types/Fashion";
+import Furniture from "./pages/Products/Types/Furniture";
+import Other from "./pages/Products/Types/Other";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import Profile from "./pages/Profile";
-import FavoriteCards from "./pages/FavoriteCards";
+import FavoriteProducts from "./pages/FavoriteProducts";
 
 const App = () => {
   return (
     <Router>
-      <Navigator />
+      <MainNavigator />
       <ToastContainer />
       <main>
         <Switch>
@@ -36,12 +41,17 @@ const App = () => {
           <Route path='/updatePwd' exact component={UpdatePwd} />
           <Route path='/signup' exact component={Signup} />
           <Route path='/' exact component={Home} />
-          <Route path='/cards' exact component={AllCards} />
-          <AuthGuardRoute path='/myCards' exact component={MyCards} />
-          <AuthGuardRoute path='/addCard' exact component={AddCard} />
+          <Route path='/products' exact component={AllProducts} />
+          <Route path='/sport' exact component={Sport} />
+          <Route path='/electronics' exact component={Electronics} />
+          <Route path='/fashion' exact component={Fashion} />
+          <Route path='/furniture' exact component={Furniture} />
+          <Route path='/other' exact component={Other} />
+          <AuthGuardRoute path='/myProducts' exact component={MyProducts} />
+          <AuthGuardRoute path='/addProduct' exact component={AddProduct} />
           <Route path='/contact' exact component={Contact} />
           <Route path='/profile' exact component={Profile} />
-          <Route path='/favorite' exact component={FavoriteCards} />
+          <Route path='/favorite' exact component={FavoriteProducts} />
           <AdminGuardRoute path='/users' exact component={Users} />
           <Redirect to='/' />
         </Switch>

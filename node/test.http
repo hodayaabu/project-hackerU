@@ -100,6 +100,8 @@ user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYz
 
 
 ### Get all user cards
-GET   {{local}}/cards/myAllCards
+GET {{local}}/cards/myAllCards
 user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
 
+### Get all cards by type
+GET {{local}}/cards/Sport

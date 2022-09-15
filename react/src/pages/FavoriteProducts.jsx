@@ -3,7 +3,7 @@ import axios from "axios"
 import { toast } from "react-toastify";
 import Card from "../components/Card";
 
-const FavoriteCards = () => {
+const FavoriteProducts = () => {
 
     const [cardsArr, setCardsArr] = useState([]);
 
@@ -45,4 +45,4 @@ const FavoriteCards = () => {
     )
 }
 
-export default FavoriteCards;
+export default FavoriteProducts;

@@ -75,8 +75,6 @@ const Users = () => {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Gender</th>
-                            <th>Age</th>
                             <th>City</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -91,8 +89,6 @@ const Users = () => {
                             .map((item) => (
                                 <tr key={item._id}>
                                     <td>{item.name}</td>
-                                    <td>{item.gender}</td>
-                                    <td>{item.age}</td>
                                     <td>{item.city}</td>
                                     <td>{item.email}</td>
                                     <td>{item.phone}</td>

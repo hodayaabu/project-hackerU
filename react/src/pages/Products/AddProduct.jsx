@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlusCircle } from "react-icons/fa";
 
-const AddCard = () => {
+const AddProduct = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('');
@@ -60,8 +60,8 @@ const AddCard = () => {
 
     return (
         <>
-            <h3>Add New Card: </h3>
-            <div className="row row-cols-1 row-cols-md-4 g-4">
+            <h3>Add New Product: </h3>
+            <div >
                 <form className="CardForm" onSubmit={handleSubmit}>
 
                     <label htmlFor="imageInput">Write image link here:</label>
@@ -97,10 +97,9 @@ const AddCard = () => {
                     <div className="mb-3">
                         <select className="form-select" aria-label="Default select example" onChange={handleTypeChange}>
                             <option>Product Type: </option>
-                            <option value="Appliances">Appliances</option>
+                            <option value="Electronics">Electronics</option>
                             <option value="Furniture">Furniture</option>
                             <option value="Sport">Sport</option>
-                            <option value="Cellular">Cellular</option>
                             <option value="Fashion">Fashion</option>
                             <option value="other">other</option>
                         </select>
@@ -114,4 +113,4 @@ const AddCard = () => {
     )
 };
 
-export default AddCard;
+export default AddProduct;
