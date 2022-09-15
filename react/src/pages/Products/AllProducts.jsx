@@ -1,10 +1,59 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Modal } from 'react-bootstrap';
 import CardsNavigator from "../../components/CardsNavigator";
 
 const AllProducts = () => {
     const [cardsArr, setCardsArr] = useState([]);
+    const [show, setShow] = useState(false);
+    const [product, setProduct] = useState({});
+
+    const style = {
+        width: "100%",
+    }
+
+    const cardStyle = {
+        width: '25%',
+        margin: '3%'
+    }
+
+    const handleSorted = (e) => {
+        if (e.target.value === 'high') {
+            const sortedCards = [...cardsArr].sort((a, b) => b.price - a.price);
+            setCardsArr(sortedCards);
+        } else if (e.target.value === 'low') {
+            const sortedCards = [...cardsArr].sort((a, b) => a.price - b.price);
+            setCardsArr(sortedCards);
+        }
+    }
+
+    const handleClose = () => {
+        setShow(false);
+        setProduct({});
+    }
+
+    const handleShow = (e) => {
+        axios.get('cards/myCard', { headers: { 'id-card': e.target.id } })
+            .then((res) => {
+                setProduct(res.data);
+                setShow(true);
+            })
+            .catch((err) => {
+                console.log("err.request", err.request);
+
+                if (err.response) {
+                    //error from server
+                    toast.error(err.response.data)
+                } else if (err.request) {
+                    //error if server not responding
+                    toast.error('Something went wrong')
+                } else {
+                    toast.error('Something went wrong')
+                }
+            });
+    }
+
 
     useEffect(() => {
         axios.get('/cards/allCards')
@@ -27,26 +76,6 @@ const AllProducts = () => {
             });
     }, []);
 
-    const handleSorted = (e) => {
-        if (e.target.value === 'high') {
-            const sortedCards = [...cardsArr].sort((a, b) => b.price - a.price);
-            setCardsArr(sortedCards);
-        } else if (e.target.value === 'low') {
-            const sortedCards = [...cardsArr].sort((a, b) => a.price - b.price);
-            setCardsArr(sortedCards);
-        }
-    }
-
-    const style = {
-        width: "100%",
-    }
-
-    const cardStyle = {
-        width: '25%',
-        margin: '3%'
-    }
-
-
     return (
         <>
             <CardsNavigator />
@@ -60,38 +89,33 @@ const AllProducts = () => {
                 {cardsArr.map((item) => {
                     return (
                         <div className="card" style={cardStyle} key={item._id}>
-                            <div className="col" >
-                                <img className="productPic" src={item.image} style={style} alt="Product pic" />
-                                <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
-                                <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
-                                <button type="button" className="btn btn-outline-info" key={item._id} data-bs-toggle="modal" data-bs-target="#productCard">
-                                    Go to the product
-                                </button>
+                            <img className="productPic" src={item.image} style={style} alt="Product pic" />
+                            <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
+                            <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
 
-                                <div className="modal fade" key={item._id} id="productCard" tabindex="-1" aria-labelledby="productCardLabel" aria-hidden="true">
-                                    <div className="modal-dialog">
-                                        <div className="modal-content">
-                                            <img className="productPic" src={item.image} style={style} alt="Product pic" />
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id="productCardLabel">About the product:</h5>
-                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <p className="card-text">{item.description}</p>
-                                                <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
-                                                <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
-                                                <p className="card-text"> <strong>Contact: </strong> {item.name} - {item.phone}</p>
-                                            </div>
+                            <button className="btn btn-outline-dark" onClick={handleShow} id={item._id}>Show more</button>
 
-                                            <div className="modal-footer">
-                                                Created at: {item.creationDate}
-                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Modal show={show} onHide={handleClose}>
+                                <Modal.Dialog >
+                                    <Modal.Header>
+                                        <img className="productPic" src={product.image} style={style} alt="Product pic" />
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <h5>About the product:</h5>
+                                        <p className="card-text">{product.description}</p>
+                                        <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
+                                        <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
+                                        <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        Created at: {product.creationDate}
+                                        <button type="button" onClick={handleClose} className="btn btn-secondary">Close</button>
+                                    </Modal.Footer>
+                                </Modal.Dialog>
+                            </Modal>
+
                         </div>
+
                     )
                 })}
             </div>

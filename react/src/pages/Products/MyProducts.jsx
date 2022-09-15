@@ -60,7 +60,7 @@ const MyProducts = () => {
     return (
         <>
             <h3>My Products</h3>
-            <div className="row row-cols-1 row-cols-md-4 g-4">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
                 {cardsArr.map((item) => {
                     return (
                         <Card
