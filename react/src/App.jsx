@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
+import Container from 'react-bootstrap/Container';
 
 //Components
 import MainNavigator from './components/MainNavigator';
@@ -28,34 +29,38 @@ import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import Profile from "./pages/Profile";
 import FavoriteProducts from "./pages/FavoriteProducts";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App = () => {
   return (
     <Router>
       <MainNavigator />
       <ToastContainer />
-      <main>
-        <Switch>
-          <Route path='/login' exact component={Login} />
-          <Route path='/logout' exact component={Logout} />
-          <Route path='/updatePwd' exact component={UpdatePwd} />
-          <Route path='/signup' exact component={Signup} />
-          <Route path='/' exact component={Home} />
-          <Route path='/products' exact component={AllProducts} />
-          <Route path='/sport' exact component={Sport} />
-          <Route path='/electronics' exact component={Electronics} />
-          <Route path='/fashion' exact component={Fashion} />
-          <Route path='/furniture' exact component={Furniture} />
-          <Route path='/other' exact component={Other} />
-          <AuthGuardRoute path='/myProducts' exact component={MyProducts} />
-          <AuthGuardRoute path='/addProduct' exact component={AddProduct} />
-          <Route path='/contact' exact component={Contact} />
-          <Route path='/profile' exact component={Profile} />
-          <Route path='/favorite' exact component={FavoriteProducts} />
-          <AdminGuardRoute path='/users' exact component={Users} />
-          <Redirect to='/' />
-        </Switch>
-      </main>
+      <Container>
+        <main>
+          <Switch>
+            <Route path='/login' exact component={Login} />
+            <Route path='/logout' exact component={Logout} />
+            <Route path='/updatePwd' exact component={UpdatePwd} />
+            <Route path='/signup' exact component={Signup} />
+            <Route path='/' exact component={Home} />
+            <Route path='/products' exact component={AllProducts} />
+            <Route path='/sport' exact component={Sport} />
+            <Route path='/electronics' exact component={Electronics} />
+            <Route path='/fashion' exact component={Fashion} />
+            <Route path='/furniture' exact component={Furniture} />
+            <Route path='/other' exact component={Other} />
+            <AuthGuardRoute path='/myProducts' exact component={MyProducts} />
+            <AuthGuardRoute path='/addProduct' exact component={AddProduct} />
+            <Route path='/contact' exact component={Contact} />
+            <AuthGuardRoute path='/profile' exact component={Profile} />
+            <AuthGuardRoute path='/favorite' exact component={FavoriteProducts} />
+            <AdminGuardRoute path='/users' exact component={Users} />
+            <Route path='/privacyPolicy' exact component={PrivacyPolicy} />
+            <Redirect to='/' />
+          </Switch>
+        </main>
+      </Container>
       <Footer />
     </Router>
   );

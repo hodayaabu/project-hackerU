@@ -94,22 +94,21 @@ const Fashion = () => {
                             <button className="btn btn-outline-dark" onClick={handleShow} id={item._id}>Show more</button>
 
                             <Modal show={show} onHide={handleClose}>
-                                <Modal.Dialog >
-                                    <Modal.Header>
-                                        <img className="productPic" src={product.image} style={style} alt="Product pic" />
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <h5>About the product:</h5>
-                                        <p className="card-text">{product.description}</p>
-                                        <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
-                                        <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
-                                        <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
-                                    </Modal.Body>
-                                    <Modal.Footer>
-                                        Created at: {product.creationDate}
-                                        <button type="button" onClick={handleClose} className="btn btn-secondary">Close</button>
-                                    </Modal.Footer>
-                                </Modal.Dialog>
+
+                                <Modal.Header>
+                                    <img className="productPic" src={product.image} style={style} alt="Product pic" />
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <h5>About the product:</h5>
+                                    <p className="card-text">{product.description}</p>
+                                    <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
+                                    <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
+                                    <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    Created at: {product.creationDate}
+                                    <button type="button" onClick={handleClose} className="btn btn-secondary">Close</button>
+                                </Modal.Footer>
                             </Modal>
 
                         </div>

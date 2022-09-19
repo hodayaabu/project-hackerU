@@ -45,7 +45,7 @@ const MainNavigator = () => {
 
     return (
         <nav className="navbar navbar-expand-lg bg-ligh">
-            <NavLink className="navbar-brand navbar-logo" to="/" exact >website logo</NavLink>
+            <NavLink className="navbar-brand navbar-logo" to="/" exact >BUY & SELL</NavLink>
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
