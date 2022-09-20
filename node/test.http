@@ -57,6 +57,25 @@ Content-Type: application/json
     "email": "hodaya1abu@gmail.com"
 }
 
+
+////// Messages from users ////////
+
+###Get all users messages:
+GET {{local}}/msgs/allUsersMsg
+admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
+
+
+###Add new user message:
+POST {{local}}/msgs/newMsg
+Content-Type: application/json
+
+{
+    "name": "Hodaya",
+    "email": "hodaya@gmail.com",
+    "msg": "your service is very good"
+}
+
+
 //Cards//
 
 ### Get all cards:

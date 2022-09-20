@@ -6,16 +6,16 @@ import axios from "axios";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
-    const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
-
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [description, setDescription] = useState('');
 
     useEffect(() => {
+        const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
         const result = EMAIL_REGEX.test(email);
         setValidEmail(result);
     }, [email])
@@ -34,31 +34,34 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(userName, email, description);
 
-        // axios.post(
-        //     '/users/contact',
-        //     {
-        //         name: userName,
-        //         email,
-        //     }
-        // )
-        //     .then((response) => {
-        //         toast('We will get back to you as soon as possible');
-        //     })
-        //     .catch((err) => {
-        //         console.log("err.request", err.request);
+        axios.post(
+            '/msgs/newMsg',
+            {
+                name: userName,
+                email,
+                msg: description
+            }
+        )
+            .then((response) => {
+                toast(response.data);
+                setUserName('');
+                setEmail('');
+                setDescription('');
+            })
+            .catch((err) => {
+                console.log("err.request", err.request);
 
-        //         if (err.response) {
-        //             //error from server
-        //             toast.error(err.response.data)
-        //         } else if (err.request) {
-        //             //error if server not responding
-        //             toast.error('Something went wrong')
-        //         } else {
-        //             toast.error('Something went wrong')
-        //         }
-        //     });
+                if (err.response) {
+                    //error from server
+                    toast.error(err.response.data)
+                } else if (err.request) {
+                    //error if server not responding
+                    toast.error('Something went wrong')
+                } else {
+                    toast.error('Something went wrong')
+                }
+            });
     };
     return (
         <>
@@ -88,7 +91,7 @@ const Contact = () => {
                         Please enter a valid email.
                     </p>
                 </Form.Group>
-                <Form.Label>Leave your description here</Form.Label>
+                <Form.Label>Leave your message here</Form.Label>
                 <FloatingLabel controlId="floatingTextarea2" onChange={handleDescriptionChange} value={description} required>
                     <Form.Control
                         as="textarea"
@@ -99,6 +102,21 @@ const Contact = () => {
                     Submit
                 </Button>
             </Form>
+
+            <div>
+                <h5>You can also contact us in one of this options:</h5>
+                <p>
+                    Email:
+                    <Link to='#' onClick={() => window.location = 'mailto:hodaya1abu@gmail.com'}>
+                        hodaya1abu@gmail.com
+                    </Link>
+                    <br />
+                    Phone:
+                    <Link to='#' onClick={() => window.location = 'tel:0587611770'}>
+                        0587611770
+                    </Link>
+                </p>
+            </div>
         </>
     )
 };
