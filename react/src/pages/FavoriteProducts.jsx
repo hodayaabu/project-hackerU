@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify";
-import Card from "../components/Card";
 
 const FavoriteProducts = () => {
 
     const [cardsArr, setCardsArr] = useState([]);
 
     useEffect(() => {
-        axios.get('/cardsReview/myFavoriteCards')
+        axios.get('/users/favoriteCards')
             .then((response) => {
                 setCardsArr(response.data)
             })
@@ -26,22 +25,9 @@ const FavoriteProducts = () => {
                 }
             });
     }, [])
+    console.log(cardsArr);
     return (
-        <div className="row row-cols-1 row-cols-md-4 g-4">
-            {cardsArr.map((item) => {
-                return (
-                    <Card
-                        name={item.name}
-                        desc={item.description}
-                        rating={item.rating}
-                        creationDate={item.creationDate}
-                        image={item.image}
-                        id={item._id}
-                        key={item._id}
-                    />
-                );
-            })}
-        </div>
+        <div></div>
     )
 }
 

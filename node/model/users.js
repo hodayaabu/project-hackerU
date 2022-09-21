@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
         maxlength: 13,
         required: true,
     },
+    favoriteCards: {
+        type: Array,
+    },
     admin: {
         type: Boolean,
     }

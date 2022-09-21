@@ -11,12 +11,12 @@ POST  {{local}}/users/signup
 Content-Type: application/json
 
 {
-    "name": "Hodaya",
-    "city": "Jerusalem", 
-    "email": "hodaya@gmail.com",
-    "password": "Hodaya770@",
+    "name": "Tal",
+    "city": "Tel-Aviv", 
+    "email": "tal@gmail.com",
+    "password": "Tall770@",
     "phone": "0587611770",
-    "admin": true
+    "favoriteCards": ["6314693a7c62e0ae1f664fed", "6314693a7c62e0ae1f664fed"]
 }
 
 
@@ -25,8 +25,8 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "hodaya@gmail.com",
-    "password": "Hodaya770@"
+    "email": "tal@gmail.com",
+    "password": "Tall770@"
 }
 
 
@@ -43,14 +43,23 @@ Content-Type: application/json
     "city": "Tel Aviv"
 }
 
+
 ### Delete user by id:
 DELETE  {{local}}/users/deleteUser
 admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTUyOTM4MDVjZDMzNjRiN2E4MTYiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyMjc2OTA5fQ.wJkvQJXTHbdmjfgbbBY05K54BDNWrVbHle6J0fDWzYM
 user-id: 631454cc3805cd3364b7a80d
 
 
+### Get all the favorite card of user:
+GET {{local}}/users/favoriteCards
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzgzYjQ4ZDMxOTNlYmZhZTExZGIiLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTY2Mzc0ODE3NX0._eVXJhOAZ1kQLhuaWiWP69QI7UlRhlMNomgxCETndFI
+
+
+
+
+
 ### Forgot pwd:
-PATCH  {{{local}}}/users/forgotPassword
+PATCH {{{local}}}/users/forgotPassword
 Content-Type: application/json
 
 {

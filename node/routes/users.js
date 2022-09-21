@@ -1,6 +1,7 @@
 const { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd } = require("../validations/user.validation");
 const validateAuth = require('../validations/auth.validation');
 const User = require("../model/users");
+const { Card } = require("../model/cards");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
 
@@ -200,6 +201,30 @@ router.delete('/deleteUser', authAdmin, async (req, res) => {
     res.status(401).json({ err })
   }
 });
+
+
+//Add card to favorites:
+router.get('/favoriteCards', auth, async (req, res) => {
+  try {
+    let user = await User.findById({ _id: req.user._id });
+    const idCardsArr = user.favoriteCards;
+
+    for (let i = 0; i <= idCardsArr.length; i++) {
+      let favoriteCardsArr = [];
+      let card = Card.findById({ '_id': idCardsArr[i] });
+      favoriteCardsArr.push(card);
+      return favoriteCardsArr;
+    }
+    console.log(favoriteCardsArr);
+
+    res.send(favoriteCardsArr);
+
+  } catch (err) {
+    console.log("Something went wrong.", err);
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+
+})
 
 
 //forgot pwd:

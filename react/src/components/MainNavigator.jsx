@@ -72,7 +72,7 @@ const MainNavigator = () => {
                         <ul className="dropdown-menu">
                             <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
                             <li><NavLink className="dropdown-item" to="/myProducts">My Products</NavLink></li>
-                            <li><NavLink className="dropdown-item" to="/favoriteProducts">Favorite Products</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/favorite">Favorite Products</NavLink></li>
                         </ul>
                     </li>
 
