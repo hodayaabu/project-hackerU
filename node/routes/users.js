@@ -209,15 +209,16 @@ router.get('/favoriteCards', auth, async (req, res) => {
     let user = await User.findById({ _id: req.user._id });
     const idCardsArr = user.favoriteCards;
 
-    for (let i = 0; i <= idCardsArr.length; i++) {
-      let favoriteCardsArr = [];
-      let card = Card.findById({ '_id': idCardsArr[i] });
-      favoriteCardsArr.push(card);
-      return favoriteCardsArr;
-    }
-    console.log(favoriteCardsArr);
+    // for (let i = 0; i <= idCardsArr.length; i++) {
+    //   let favoriteCardsArr = [];
+    //   let card = Card.findById({ '_id': idCardsArr[i] });
+    //   favoriteCardsArr.push(card);
+    //   return favoriteCardsArr;
+    // }
+    // console.log(favoriteCardsArr);
 
-    res.send(favoriteCardsArr);
+    // res.send(favoriteCardsArr);
+    res.send(idCardsArr);
 
   } catch (err) {
     console.log("Something went wrong.", err);

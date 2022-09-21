@@ -3,13 +3,13 @@ import axios from "axios"
 import { toast } from "react-toastify";
 
 const FavoriteProducts = () => {
-
+    const [idCardsArr, setIdCardsArr] = useState([]);
     const [cardsArr, setCardsArr] = useState([]);
 
     useEffect(() => {
         axios.get('/users/favoriteCards')
             .then((response) => {
-                setCardsArr(response.data)
+                setIdCardsArr(response.data)
             })
             .catch((err) => {
                 console.log("err.request", err.request);
@@ -25,7 +25,19 @@ const FavoriteProducts = () => {
                 }
             });
     }, [])
-    console.log(cardsArr);
+
+    useEffect(() => {
+        let newArr = [];
+        for (let i = 0; i < idCardsArr.length; i++) {
+            axios.get('cards/myCard', { headers: { 'id-card': idCardsArr[i] } })
+                .then(res => {
+                    console.log(res.data);
+                })
+        }
+        console.log(newArr);
+    }, [idCardsArr])
+
+    // console.log(cardsArr);
     return (
         <div></div>
     )
