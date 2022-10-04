@@ -25,14 +25,15 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "tal@gmail.com",
-    "password": "Tall770@"
+    "email": "david@gmail.com",
+    "password": "David770@"
 }
 
 
 ### Get user by token:
 GET {{local}}/users/me
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzgzYjQ4ZDMxOTNlYmZhZTExZGIiLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTY2Mzc0ODE3NX0._eVXJhOAZ1kQLhuaWiWP69QI7UlRhlMNomgxCETndFI
+
 
 ### Update user by email:
 PATCH {{local}}/users/update
@@ -50,11 +51,28 @@ admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTUyOTM4MDVjZDM
 user-id: 631454cc3805cd3364b7a80d
 
 
-### Get all the favorite card of user:
+### Get all user favorite cards:
 GET {{local}}/users/favoriteCards
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzgzYjQ4ZDMxOTNlYmZhZTExZGIiLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTY2Mzc0ODE3NX0._eVXJhOAZ1kQLhuaWiWP69QI7UlRhlMNomgxCETndFI
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
 
 
+### Add new favorite card:
+PATCH {{local}}/users/addFavorite
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+Content-Type: application/json
+
+{
+    "cardId": "63146b1c7c62e0ae1f664ffd"
+}
+
+### Remove favorite card:
+PATCH {{local}}/users/removeFavorite
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+Content-Type: application/json
+
+{
+    "cardId": "6314693a7c62e0ae1f664fed"
+}
 
 
 

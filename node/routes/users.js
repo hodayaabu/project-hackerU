@@ -203,22 +203,118 @@ router.delete('/deleteUser', authAdmin, async (req, res) => {
 });
 
 
-//Add card to favorites:
+//Add card to favorites
+router.patch('/addFavorite', auth, async (req, res) => {
+
+  try {
+    const { cardId } = req.body;
+    if (!cardId) {
+      res.status(401).send("No card id provide");
+      return;
+    }
+
+    let card = await Card.findById({ _id: cardId });
+    if (!card) {
+      res.status(401).send("Card was not found");
+      return;
+    }
+
+    let user = await User.findById({ _id: req.user._id });
+    if (!user) {
+      res.status(400).send("Sorry, this user is not exist :(");
+      return;
+    }
+
+    let cardsArr = user.favoriteCards;
+
+    cardsArr.map((id) => {
+      if (id === cardId) {
+        res.status(400).send("This product is already in your favorites");
+        return;
+      }
+    })
+
+    cardsArr = [...cardsArr, cardId];
+
+    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: cardsArr });
+
+    res.send('The product saved');
+
+  } catch (err) {
+    console.log("Something went wrong.", err);
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+
+});
+
+
+//Remove card to favorites
+router.patch('/removeFavorite', auth, async (req, res) => {
+
+  try {
+    const { cardId } = req.body;
+    if (!cardId) {
+      res.status(401).send("No card id provide");
+      return;
+    }
+
+    let card = await Card.findById({ _id: cardId });
+    if (!card) {
+      res.status(401).send("Card was not found");
+      return;
+    }
+
+    let user = await User.findById({ _id: req.user._id });
+    if (!user) {
+      res.status(400).send("Sorry, this user is not exist :(");
+      return;
+    }
+
+    let idCardsArr = user.favoriteCards;
+
+    idCardsArr.map((id) => {
+      if (id !== cardId) {
+        res.status(400).send("This card is'nt in your favorites");
+        return;
+      }
+    })
+
+    idCardsArr = idCardsArr.filter((id) => {
+      return id !== cardId;
+    })
+
+    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: idCardsArr })
+
+    res.send('The product removed from favorites')
+  } catch (err) {
+    console.log("Something went wrong.", err);
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+
+})
+
+
+//Get all user favorite cards:
 router.get('/favoriteCards', auth, async (req, res) => {
   try {
     let user = await User.findById({ _id: req.user._id });
     const idCardsArr = user.favoriteCards;
 
-    // for (let i = 0; i <= idCardsArr.length; i++) {
-    //   let favoriteCardsArr = [];
-    //   let card = Card.findById({ '_id': idCardsArr[i] });
-    //   favoriteCardsArr.push(card);
-    //   return favoriteCardsArr;
-    // }
-    // console.log(favoriteCardsArr);
 
-    // res.send(favoriteCardsArr);
-    res.send(idCardsArr);
+    // idCardsArr.forEach(async (id) => {
+    //   let card = await Card.findById({ _id: id });
+    //   cardsArr.push(card);
+    // });
+    // console.log(cardsArr);
+    // res.send(cardsArr);
+
+    let cardsArr = [];
+    idCardsArr.map(async (id) => {
+      let card = await Card.findById({ _id: id });
+      cardsArr = [...cardsArr, card];
+    });
+
+    res.send(cardsArr);
 
   } catch (err) {
     console.log("Something went wrong.", err);
@@ -226,6 +322,7 @@ router.get('/favoriteCards', auth, async (req, res) => {
   }
 
 })
+
 
 
 //forgot pwd:

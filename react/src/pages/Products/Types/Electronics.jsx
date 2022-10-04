@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Modal } from 'react-bootstrap';
+import { BsHeartFill } from 'react-icons/bs'
 import CardsNavigator from "../../../components/CardsNavigator"
 
 const Electronics = () => {
@@ -24,6 +25,26 @@ const Electronics = () => {
             .then((res) => {
                 setProduct(res.data);
                 setShow(true);
+            })
+            .catch((err) => {
+                console.log("err.request", err.request);
+
+                if (err.response) {
+                    //error from server
+                    toast.error(err.response.data)
+                } else if (err.request) {
+                    //error if server not responding
+                    toast.error('Something went wrong')
+                } else {
+                    toast.error('Something went wrong')
+                }
+            });
+    }
+
+    const handleAddFavorite = (productId) => {
+        axios.patch('users/addFavorite', { 'cardId': productId })
+            .then((res) => {
+                toast(res.data);
             })
             .catch((err) => {
                 console.log("err.request", err.request);
@@ -104,6 +125,7 @@ const Electronics = () => {
                                     <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
                                     <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
                                     <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
+                                    <span onClick={() => handleAddFavorite(product._id)}><BsHeartFill /> Add to favorites</span>
                                 </Modal.Body>
                                 <Modal.Footer>
                                     Created at: {product.creationDate}

@@ -50,7 +50,6 @@ const Login = () => {
         axios
             .post("/users/login", { email: email, password: password })
             .then((response) => {
-                console.log("response", response);
 
                 //save token from server to local storage
                 localStorage.setItem("token", response.data.token);

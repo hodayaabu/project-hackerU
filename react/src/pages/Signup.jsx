@@ -94,7 +94,6 @@ const Signup = () => {
             }
         )
             .then((response) => {
-                console.log("response", response);
                 setSuccess(true);
                 toast('You have successfully registered');
             })

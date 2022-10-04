@@ -20,7 +20,8 @@ function validateUpdateUser(user) {
         city: Joi.string().min(4).max(54),
         email: Joi.string().min(9).max(225).email(),
         phone: Joi.string().min(9).max(13),
-        password: Joi.string().min(8).max(225)
+        password: Joi.string().min(8).max(225),
+        favoriteCards: Joi.array()
     });
 
     return schema.validate(user);
