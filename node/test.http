@@ -81,7 +81,7 @@ PATCH {{{local}}}/users/forgotPassword
 Content-Type: application/json
 
 {
-    "email": "hodaya1abu@gmail.com"
+    "email": "hodaya@gmail.com"
 }
 
 

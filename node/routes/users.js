@@ -4,6 +4,7 @@ const User = require("../model/users");
 const { Card } = require("../model/cards");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
+const { sendResetEmail } = require('../email/sendEmailResetPwd');
 
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
@@ -324,7 +325,6 @@ router.get('/favoriteCards', auth, async (req, res) => {
 })
 
 
-
 //forgot pwd:
 router.patch('/forgotPassword', async (req, res) => {
   try {
@@ -350,7 +350,7 @@ router.patch('/forgotPassword', async (req, res) => {
       const salt = await bcrypt.genSalt(12);
       let hashedResetPassword = await bcrypt.hash(resetPassword, salt);
 
-      user = await User.findOneAndUpdate({ email: req.body.email }, hashedResetPassword);
+      user = await User.findOneAndUpdate({ email: req.body.email }, { password: hashedResetPassword });
 
       sendResetEmail(req.body.email, resetPassword);
 
@@ -364,89 +364,54 @@ router.patch('/forgotPassword', async (req, res) => {
 });
 
 
-// //Update pwd:
-// router.patch('/resetPassword/:resetPassword/:email', async (req, res) => {
-//   try {
-//     let resetPassword = req.params.resetPassword;
-//     let email = req.params.email;
+//Update pwd:
+router.patch('/resetPassword/:resetPassword/:email', async (req, res) => {
+  try {
+    let resetPassword = req.params.resetPassword;
+    let email = req.params.email;
 
-//     const error1 = validateUpdateForgotPwd(email).error;
+    const error1 = validateUpdateForgotPwd(email).error;
 
-//     if (error1) {
-//       res.status(400).send(error1.details[0].message);
-//       return;
-//     }
+    if (error1) {
+      res.status(400).send(error1.details[0].message);
+      return;
+    }
 
-//     const error2 = validateUpdateUser(req.body).error;
+    const error2 = validateUpdateUser(req.body).error;
 
-//     if (error2) {
-//       res.status(400).send(error2.details[0].message);
-//       return;
-//     }
+    if (error2) {
+      res.status(400).send(error2.details[0].message);
+      return;
+    }
 
-//     const error3 = validateUpdatePwd(resetPassword).error;
+    const error3 = validateUpdatePwd(resetPassword).error;
 
-//     if (error3) {
-//       res.status(400).send(error3.details[0].message);
-//       return;
-//     }
+    if (error3) {
+      res.status(400).send(error3.details[0].message);
+      return;
+    }
 
-//     let user = await User.findOne({ email});
+    let user = await User.findOne({ email });
 
-//     if (user) {
+    if (user) {
 
-//       let passwordChecker = await bcrypt.compareHash(resetPassword, user.hashedResetPassword);
+      let passwordChecker = await bcrypt.compareHash(resetPassword, user.password);
 
-//       if (passwordChecker) {
-//         let hashedPassword = await bcrypt.createHash(validateData.password);
-//         let updatedUserData = await userModel.updateUserData(userData.id, { password: hashedPassword });
+      if (passwordChecker) {
+        let hashedPassword = await bcrypt.createHash(req.body.password);
+        await User.findByIdAndUpdate({ _id: user._id }, { password: hashedPassword });
 
-//         res.json({ message: "You have successfully changed your password." });
-//       } else {
-//         res.json({ message: "The reset password is incorrect." });
-//       }
-//     } else {
-//       res.json({ message: "There are no user with this email." });
-//     }
-//   } catch (err) {
-//     res.status(401).json({ message: "Something went wrong.", err });
-//   }
-// });
-
-
-// router.patch('/reset-password/:resetPassword/:email', async (req, res) => {
-//   try {
-//     let resetPassword = req.params.resetPassword;
-//     let email = req.params.email;
-
-//     let validateEmail = await userValidation.validateForgotPasswordSchema.validateAsync({ email });
-//     let validateData = await userValidation.validateUpdateUsersSchema.validateAsync(req.body);
-//     let validateResetPassword = await userValidation.validateUpdateUsersSchema.validateAsync({ password: resetPassword });
-
-//     let databaseCheckerEmail = await userModel.selectUserByEmail(validateEmail.email);
-
-
-//     if (databaseCheckerEmail.length === 1) {
-//       let userData = databaseCheckerEmail[0];
-
-//       let passwordChecker = await bcrypt.compareHash(validateResetPassword.password, userData.hashedResetPassword);
-
-//       if (passwordChecker) {
-//         let hashedPassword = await bcrypt.createHash(validateData.password);
-//         let updatedUserData = await userModel.updateUserData(userData.id, { password: hashedPassword });
-
-//         res.json({ message: "You have successfully changed your password." });
-//       } else {
-//         res.json({ message: "The reset password is incorrect." });
-//       }
-//     } else {
-//       res.json({ message: "There are no user with this email." });
-//     }
-//   } catch (err) {
-//     res.status(401).json({ message: "Something went wrong.", err });
-//   }
-// });
-
+        res.send("You have successfully changed your password.");
+      } else {
+        res.send("The reset password is incorrect.");
+      }
+    } else {
+      res.send("There are no user with this email.");
+    }
+  } catch (err) {
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+});
 
 
 

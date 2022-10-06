@@ -14,10 +14,10 @@ const sendResetEmail = (email, resetPassword) => {
         let mailOptions = {
             from: config.get("adminMail"),
             to: email,
-            subject: "Reset password for hodaya's website ",
+            subject: "Reset password for SELL&BUY website ",
             html: `
         <h1>Here is a link to reset your password:</h1>
-        <div><a href="http://localhost:3000/reset-password/${resetPassword}/${email}">click here!</a></div>
+        <div><a href="http://localhost:3000/resetPassword/${resetPassword}/${email}">click here!</a></div>
         <h3>Have a nice day :)</h3>`,
         };
 
