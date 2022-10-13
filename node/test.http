@@ -11,10 +11,10 @@ POST  {{local}}/users/signup
 Content-Type: application/json
 
 {
-    "name": "Tal",
-    "city": "Tel-Aviv", 
-    "email": "tal@gmail.com",
-    "password": "Tall770@",
+    "name": "David Cohen",
+    "city": "modi`in", 
+    "email": "dkhn724@gmail.com",
+    "password": "David770@",
     "phone": "0587611770",
     "favoriteCards": ["6314693a7c62e0ae1f664fed", "6314693a7c62e0ae1f664fed"]
 }
@@ -25,8 +25,8 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "david@gmail.com",
-    "password": "David770@"
+    "email": "hodaya@gmail.com",
+    "password": "Hodaya770#"
 }
 
 
@@ -75,13 +75,12 @@ Content-Type: application/json
 }
 
 
-
 ### Forgot pwd:
-PATCH {{{local}}}/users/forgotPassword
+POST {{local}}/users/forgotPassword
 Content-Type: application/json
 
 {
-    "email": "hodaya@gmail.com"
+    "email": "dkhn724@gmail.com"
 }
 
 

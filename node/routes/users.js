@@ -4,7 +4,9 @@ const User = require("../model/users");
 const { Card } = require("../model/cards");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
-const { sendResetEmail } = require('../email/sendEmailResetPwd');
+const config = require("config");
+const jwt = require("JsonWebToken");
+const nodemailer = require('nodemailer');
 
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
@@ -326,7 +328,7 @@ router.get('/favoriteCards', auth, async (req, res) => {
 
 
 //forgot pwd:
-router.patch('/forgotPassword', async (req, res) => {
+router.post('/forgotPassword', async (req, res) => {
   try {
     const { error } = validateUpdateForgotPwd(req.body);
 
@@ -335,83 +337,100 @@ router.patch('/forgotPassword', async (req, res) => {
       return;
     }
 
-    let user = await User.findOne({ email: req.body.email });
-
-    if (user) {
-      let resetPassword = Math.random().toString(36).slice(-8);
-
-      resetPassword = resetPassword.charAt(0).toLocaleUpperCase() + resetPassword.slice(1);
-
-      let symbolsId = Math.round(Math.random() * 9);
-      let symbols = ["!", "@", "#", "$", "%", "^", "=", "&", "_", "*"];
-
-      resetPassword = resetPassword + symbols[symbolsId];
-
-      const salt = await bcrypt.genSalt(12);
-      let hashedResetPassword = await bcrypt.hash(resetPassword, salt);
-
-      user = await User.findOneAndUpdate({ email: req.body.email }, { password: hashedResetPassword });
-
-      sendResetEmail(req.body.email, resetPassword);
-
-      res.send("An email will be sent to you shortly.");
-    } else {
-      res.send("There are no user with this email.");
-    }
-  } catch (err) {
-    res.status(401).json({ message: "Something went wrong.", err });
-  }
-});
-
-
-//Update pwd:
-router.patch('/resetPassword/:resetPassword/:email', async (req, res) => {
-  try {
-    let resetPassword = req.params.resetPassword;
-    let email = req.params.email;
-
-    const error1 = validateUpdateForgotPwd(email).error;
-
-    if (error1) {
-      res.status(400).send(error1.details[0].message);
-      return;
-    }
-
-    const error2 = validateUpdateUser(req.body).error;
-
-    if (error2) {
-      res.status(400).send(error2.details[0].message);
-      return;
-    }
-
-    const error3 = validateUpdatePwd(resetPassword).error;
-
-    if (error3) {
-      res.status(400).send(error3.details[0].message);
-      return;
-    }
+    const { email } = req.body;
 
     let user = await User.findOne({ email });
 
-    if (user) {
-
-      let passwordChecker = await bcrypt.compareHash(resetPassword, user.password);
-
-      if (passwordChecker) {
-        let hashedPassword = await bcrypt.createHash(req.body.password);
-        await User.findByIdAndUpdate({ _id: user._id }, { password: hashedPassword });
-
-        res.send("You have successfully changed your password.");
-      } else {
-        res.send("The reset password is incorrect.");
-      }
-    } else {
-      res.send("There are no user with this email.");
+    if (!user) {
+      res.status(400).send('User Not Exists');
+      return;
     }
+
+    const token = user.generateAuthToken();
+    const link = `http://localhost:3003/users/resetPassword/${user._id}/${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'hodaya1abu@gmail.com',
+        pass: 'h7611770a'
+      }
+    });
+
+    const mailOptions = {
+      from: 'hodaya1abu@gmail.com',
+      to: email,
+      subject: 'Password reset for SELL&BUY site',
+      text: link
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
   } catch (err) {
     res.status(401).json({ message: "Something went wrong.", err });
   }
 });
+
+
+router.get('/resetPassword/:id/:token', async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    let user = await User.findOne({ _id: id });
+
+    if (!user) {
+      res.status(400).send('User Not Exists');
+      return;
+    }
+
+    const verify = jwt.verify(token, config.get("jwtKey"));
+    res.render("index", { email: verify.email, status: 'Not Verified' })
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+});
+
+
+router.post('/resetPassword/:id/:token', async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const { error } = validateUpdatePwd(req.body);
+
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
+    const { password } = req.body;
+
+    let user = await User.findOne({ _id: id });
+
+    if (!user) {
+      res.status(400).send('User Not Exists');
+      return;
+    }
+
+    const verify = jwt.verify(token, config.get("jwtKey"));
+    if (!verify) {
+      res.status(400).send('Invalid Token');
+      return;
+    }
+    const hashPassword = await bcrypt.hash(password, 10)
+
+    await User.findByIdAndUpdate({ _id: id }, { password: hashPassword })
+
+    res.render("index", { email: verify.email, status: 'Verified' })
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({ message: "Something went wrong.", err });
+  }
+});
+
+
 
 
 
