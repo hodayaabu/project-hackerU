@@ -29,7 +29,7 @@ function validateUpdateUser(user) {
 
 function validateUpdatePwd(pwd) {
     const schema = Joi.object({
-        password: Joi.string().min(8).max(225).required(),
+        password: Joi.string().optional().pattern(new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[\\d])(?=.*[!@#$%^\\-&_*])([A-Za-z\\d!@#$%^\\-&_*]{8,255})$")).min(8).max(255),
     });
 
     return schema.validate(pwd);

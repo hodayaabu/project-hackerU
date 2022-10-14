@@ -1,3 +1,7 @@
 {
-    "jwtKey": "nmh65fhisml0872dvgfdhfhd5fsvmn"
+    "jwtKey": "nmh65fhisml0872dvgfdhfhd5fsvmn",
+    "email": {
+        "adminMail": "hodaya1abu@gmail.com",
+        "pwdMail": "h7611770a"
+    }
 }

@@ -4,10 +4,10 @@ const User = require("../model/users");
 const { Card } = require("../model/cards");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
+
 const config = require("config");
 const jwt = require("JsonWebToken");
 const nodemailer = require('nodemailer');
-
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const express = require('express');
@@ -349,28 +349,32 @@ router.post('/forgotPassword', async (req, res) => {
     const token = user.generateAuthToken();
     const link = `http://localhost:3003/users/resetPassword/${user._id}/${token}`;
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'hodaya1abu@gmail.com',
-        pass: 'h7611770a'
-      }
-    });
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: config.get('email.adminMail'),
+    //     pass: config.get('email.pwdMail'),
+    //   }
+    // });
 
-    const mailOptions = {
-      from: 'hodaya1abu@gmail.com',
-      to: email,
-      subject: 'Password reset for SELL&BUY site',
-      text: link
-    };
+    // const mailOptions = {
+    //   from: 'hodaya1abu@gmail.com',
+    //   to: email,
+    //   subject: 'Password reset for SELL&BUY site',
+    //   text: link
+    // };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //   if (error) {
+    //     console.log(error);
+    //     res.send(error.response)
+    //   } else {
+    //     console.log('Email sent: ' + info.response);
+    //     res.send('Email sent: ' + info.response)
+    //   }
+    // });
+
+    res.send(link)
   } catch (err) {
     res.status(401).json({ message: "Something went wrong.", err });
   }
