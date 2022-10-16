@@ -4,10 +4,9 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 
-// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
 
-const UpdatePwd
+const ForgotPwd
     = () => {
         const [email, setEmail] = useState("");
         const [validEmail, setValidEmail] = useState(false);
@@ -93,5 +92,5 @@ const UpdatePwd
 
     };
 
-export default UpdatePwd
+export default ForgotPwd
     ;

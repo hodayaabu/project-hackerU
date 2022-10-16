@@ -410,6 +410,7 @@ router.post('/resetPassword/:id/:token', async (req, res) => {
       return;
     }
     const { password } = req.body;
+    console.log(password);
 
     let user = await User.findOne({ _id: id });
 

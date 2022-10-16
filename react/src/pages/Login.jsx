@@ -136,9 +136,8 @@ const Login = () => {
                     </div>
                 </div>
                 <div>
-                    <p> You forgot your password?
-                        <br />
-                        <Link to={'/updatePwd'}>Update password</Link>
+                    <p>
+                        <Link to={'/forgotPwd'}>You forgot your password?</Link>
                     </p>
                 </div>
                 <button type="submit" className="btn btn-primary" disabled={!validEmail || !validPassword ? true : false}>

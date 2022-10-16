@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <script>
         const status = '<%- JSON.stringify(status)%>';
         if (JSON.parse(status) == "Verified") {
@@ -14,18 +17,36 @@
             }
         }
     </script>
+    <style>
+        div.container {
+            margin-top: 5%;
+        }
+    </style>
 </head>
 
 <body>
-    <h3>
-        <%=email%>
-    </h3>
-    <form action="" method="post">
-        <label for="password">Enter a new password here:</label>
-        <br>
-        <input type="password" name="password" id="password" placeholder="Password">
-        <input type="submit" value="submit">
-    </form>
+    <div class="container">
+        <div class="forgotPwdForm d-flex justify-content-center">
+            <form class="row g-3" action="" method="post">
+                <div class="col-auto">
+                    <h5>
+                        Hello <%=email%>
+                    </h5>
+                    <label for="password">Enter a new password here:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{8,}"
+                        title="Must include uppercase and lowercase, a number and a special character, and at least 8 or more characters"
+                        required>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary mb-3">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 </html>

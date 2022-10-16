@@ -14,7 +14,7 @@ import AdminGuardRoute from "./AuthGuard/AdminGuardRoute";
 //Pages
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
-import UpdatePwd from "./pages/UpdatePwd";
+import ForgotPwd from "./pages/ForgotPwd";
 import Signup from "./pages/Signup";
 import Home from './pages/Home';
 import AllProducts from "./pages/Products/AllProducts";
@@ -41,7 +41,7 @@ const App = () => {
           <Switch>
             <Route path='/login' exact component={Login} />
             <Route path='/logout' exact component={Logout} />
-            <Route path='/updatePwd' exact component={UpdatePwd} />
+            <Route path='/forgotPwd' exact component={ForgotPwd} />
             <Route path='/signup' exact component={Signup} />
             <Route path='/' exact component={Home} />
             <Route path='/products' exact component={AllProducts} />
