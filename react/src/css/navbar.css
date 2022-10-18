@@ -1,0 +1,38 @@
+.navbar {
+    background-color: #DADED4;
+    border-bottom: 2px solid #39603D;
+    padding: 1%;
+}
+
+.navbar-logo {
+    color: #39603D;
+    font-weight: bold;
+}
+
+.navbar-logo:hover {
+    color: #39603D;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #39603D;
+}
+
+.nav-link:hover {
+    border: 2px solid #39603D;
+    color: #39603D;
+}
+
+.dropdown-menu {
+    background-color: #DADED4;
+}
+
+.dropdown-item {
+    color: #39603D;
+}
+
+.dropdown-item:hover {
+    background-color: #DADED4;
+    border: 2px solid #39603D;
+    color: #39603D
+}

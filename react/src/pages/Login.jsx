@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../store/auth.redux";
 import { toast } from "react-toastify";
 
+//import css
+import '../css/login&signup.css';
+
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
 

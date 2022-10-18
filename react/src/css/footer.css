@@ -1,0 +1,24 @@
+div.mainFooter {
+    padding: 2%;
+    color: #39603D;
+    background-color: #DADED4;
+    border-top: 2px solid #39603D;
+    text-align: center;
+}
+
+div.links {
+    padding: 1%;
+    background-color: #DADED4;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: #39603D;
+    padding: 0 10%;
+}
+
+.link:hover {
+    color: #39603D;
+    font-weight: 650;
+}

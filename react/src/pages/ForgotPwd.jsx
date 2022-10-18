@@ -34,7 +34,7 @@ const ForgotPwd
                 .post("/users/forgotPassword", { email })
                 .then((response) => {
                     console.log("response", response);
-                    window.location.href = response.data
+                    // window.location.href = response.data
                 })
                 .catch((err) => {
                     console.log("err.request", err.request);
