@@ -33,8 +33,7 @@ const ForgotPwd
             axios
                 .post("/users/forgotPassword", { email })
                 .then((response) => {
-                    console.log("response", response);
-                    // window.location.href = response.data
+                    toast('An email was sent to you with a link to reset your password')
                 })
                 .catch((err) => {
                     console.log("err.request", err.request);

@@ -304,20 +304,24 @@ router.get('/favoriteCards', auth, async (req, res) => {
     const idCardsArr = user.favoriteCards;
 
 
-    // idCardsArr.forEach(async (id) => {
-    //   let card = await Card.findById({ _id: id });
-    //   cardsArr.push(card);
-    // });
-    // console.log(cardsArr);
-    // res.send(cardsArr);
-
-    let cardsArr = [];
-    idCardsArr.map(async (id) => {
+    const cardsArr = [];
+    idCardsArr.forEach(async (id) => {
       let card = await Card.findById({ _id: id });
-      cardsArr = [...cardsArr, card];
-    });
+      // console.log(card);
+      cardsArr.push(card);
 
-    res.send(cardsArr);
+      // console.log(cardsArr);
+    });
+    console.log(cardsArr);
+    res.json({ cardsArr: cardsArr, msg: 'hey' });
+
+
+    // idCardsArr.map(async (id) => {
+    //   let card = await Card.findById({ _id: id });
+    // cardsArr = [...cardsArr, card];
+    // });
+
+    // res.send(cardsArr);
 
   } catch (err) {
     console.log("Something went wrong.", err);
@@ -363,10 +367,10 @@ router.post('/forgotPassword', async (req, res) => {
 
 
     const mailOptions = {
-      from: 'hodaya1abu@gmail.com',
+      from: 'sellbuy442@gmail.com',
       to: email,
       subject: 'Password reset for SELL&BUY site',
-      text: link
+      text: 'Click here to reset your password: ' + link
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -378,8 +382,6 @@ router.post('/forgotPassword', async (req, res) => {
         res.send('Email sent: ' + info.response)
       }
     });
-
-    // res.send(link)
   } catch (err) {
     res.status(401).json({ message: "Something went wrong.", err });
   }

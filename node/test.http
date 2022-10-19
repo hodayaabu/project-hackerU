@@ -25,8 +25,8 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "hodaya@gmail.com",
-    "password": "Hodaya770#"
+    "email": "yoni@gmail.com",
+    "password": "Yoni770@"
 }
 
 
@@ -53,7 +53,7 @@ user-id: 631454cc3805cd3364b7a80d
 
 ### Get all user favorite cards:
 GET {{local}}/users/favoriteCards
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
 
 
 ### Add new favorite card:
