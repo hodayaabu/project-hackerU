@@ -12,7 +12,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import "react-toastify/dist/ReactToastify.css";
 
 import App from './App';
-import './App'
+import './css/App.css';
 
 import store from "./store/index.redux";
 

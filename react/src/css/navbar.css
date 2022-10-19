@@ -1,38 +1,50 @@
-.navbar {
-    background-color: #DADED4;
-    border-bottom: 2px solid #39603D;
-    padding: 1%;
+div.logo {
+    width: 100%;
+    height: 5%;
+    background-color: rgb(1, 1, 56);
 }
 
 .navbar-logo {
-    color: #39603D;
-    font-weight: bold;
+    color: white;
+    text-shadow: 2px 1px rgb(129, 93, 2);
 }
 
 .navbar-logo:hover {
-    color: #39603D;
-    font-weight: bold;
+    color: white;
+    text-shadow: 2px 1px rgb(129, 93, 2);
+}
+
+.logo-text {
+    color: rgb(129, 93, 2);
+    display: inline-block;
+    font-size: small;
+}
+
+.navbar {
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 30%);
+    padding: 2%;
+
 }
 
 .nav-link {
-    color: #39603D;
+    color: rgb(1, 1, 56);
 }
 
 .nav-link:hover {
-    border: 2px solid #39603D;
-    color: #39603D;
+    border-bottom: 3px solid rgb(1, 1, 56);
+    color: rgb(1, 1, 56);
 }
 
 .dropdown-menu {
-    background-color: #DADED4;
+    border-top: 5px solid rgb(129, 93, 2);
 }
 
 .dropdown-item {
-    color: #39603D;
+    color: rgb(1, 1, 56);
 }
 
 .dropdown-item:hover {
-    background-color: #DADED4;
-    border: 2px solid #39603D;
-    color: #39603D
+    border-bottom: 3px solid rgb(1, 1, 56);
+    color: rgb(1, 1, 56);
+    background-color: white;
 }

@@ -1,24 +1,35 @@
-div.mainFooter {
-    padding: 2%;
-    color: #39603D;
-    background-color: #DADED4;
-    border-top: 2px solid #39603D;
-    text-align: center;
-}
-
 div.links {
-    padding: 1%;
-    background-color: #DADED4;
+    border-top: 5px solid rgb(129, 93, 2);
+    margin-top: 2%;
+    padding: 2%;
+    background-color: rgb(1, 1, 56);
     text-align: center;
 }
 
 .link {
     text-decoration: none;
-    color: #39603D;
+    color: white;
     padding: 0 10%;
 }
 
 .link:hover {
-    color: #39603D;
-    font-weight: 650;
+    color: white;
+    text-shadow: 2px 2px rgb(129, 93, 2);
+
+}
+
+p.brakeLine {
+    display: inline;
+    color: white;
+}
+
+div.mainFooter {
+    padding: 2%;
+    background-color: rgb(1, 1, 56);
+    text-align: center;
+    color: white
+}
+
+.blockquote-footer {
+    color: rgb(129, 93, 2);
 }

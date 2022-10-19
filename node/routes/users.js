@@ -354,8 +354,13 @@ router.post('/forgotPassword', async (req, res) => {
       auth: {
         user: config.get('email.adminMail'),
         pass: config.get('email.pwdMail'),
-      }
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+
     });
+
 
     const mailOptions = {
       from: 'hodaya1abu@gmail.com',
