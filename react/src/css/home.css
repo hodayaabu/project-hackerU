@@ -1,0 +1,15 @@
+h1 {
+    color: rgb(129, 93, 2);
+    text-align: center;
+    margin: 2%;
+}
+
+div.info {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(228, 224, 220);
+    padding: 2%;
+    border-radius: 10%;
+    margin: auto;
+    font-size: large;
+}

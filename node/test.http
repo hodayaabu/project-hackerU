@@ -11,12 +11,13 @@ POST  {{local}}/users/signup
 Content-Type: application/json
 
 {
-    "name": "David Cohen",
-    "city": "modi`in", 
-    "email": "dkhn724@gmail.com",
-    "password": "David770@",
+    "name": "Admin",
+    "city": "NewYork", 
+    "email": "sellbuy442@gmail.com",
+    "password": "Admin770@",
     "phone": "0587611770",
-    "favoriteCards": ["6314693a7c62e0ae1f664fed", "6314693a7c62e0ae1f664fed"]
+    "favoriteCards": [],
+    "admin": "Yes"
 }
 
 
@@ -25,14 +26,14 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "yoni@gmail.com",
-    "password": "Yoni770@"
+    "email": "hodaya@gmail.com",
+    "password": "Hodaya770@"
 }
 
 
 ### Get user by token:
 GET {{local}}/users/me
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzgzYjQ4ZDMxOTNlYmZhZTExZGIiLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTY2Mzc0ODE3NX0._eVXJhOAZ1kQLhuaWiWP69QI7UlRhlMNomgxCETndFI
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
 
 
 ### Update user by email:
@@ -41,14 +42,14 @@ user-email: hodaya@gmail.com
 Content-Type: application/json
 
 {
-    "city": "Tel Aviv"
+    "admin": "Yes"
 }
 
 
 ### Delete user by id:
 DELETE  {{local}}/users/deleteUser
-admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzE0NTUyOTM4MDVjZDMzNjRiN2E4MTYiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyMjc2OTA5fQ.wJkvQJXTHbdmjfgbbBY05K54BDNWrVbHle6J0fDWzYM
-user-id: 631454cc3805cd3364b7a80d
+admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJpYXQiOjE2NjYyNTQ3NzJ9.N9Pu5WrTbuyB43kF1crRYKqPT1G51QhGNFFsn1hHGfA
+user-id: 632ac83b48d3193ebfae11db
 
 
 ### Get all user favorite cards:
@@ -58,7 +59,7 @@ user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2V
 
 ### Add new favorite card:
 PATCH {{local}}/users/addFavorite
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzUxMDRlNTk0NDI2YThlOGEzZGU3YjAiLCJlbWFpbCI6InJvbml0YWJ1NjY2QGdtYWlsLmNvbSIsImFkbWluIjoiTm8iLCJpYXQiOjE2NjYyNTQwNzd9.ZPM03Ko1NwaWLO56tT3fDMTxRmAKOWXGK4LoonFqdAI
 Content-Type: application/json
 
 {

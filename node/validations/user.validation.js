@@ -7,7 +7,7 @@ function validateUser(user) {
         email: Joi.string().min(9).max(225).required().email(),
         password: Joi.string().min(8).max(225).required(),
         phone: Joi.string().min(9).max(13).required(),
-        admin: Joi.boolean(),
+        admin: Joi.string(),
         favoriteCards: Joi.array()
     });
 
@@ -43,4 +43,13 @@ function validateUpdateForgotPwd(email) {
     return schema.validate(email);
 }
 
-module.exports = { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd };
+function validateUserMsg(userMsg) {
+    const schema = Joi.object({
+        name: Joi.string().min(2).max(225).required(),
+        email: Joi.string().email().required(),
+        msg: Joi.string().min(2).max(2255).required()
+    });
+    return schema.validate(userMsg);
+}
+
+module.exports = { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd, validateUserMsg };

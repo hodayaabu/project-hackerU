@@ -36,7 +36,7 @@ const Contact = () => {
         e.preventDefault();
 
         axios.post(
-            '/msgs/newMsg',
+            '/users/newMsg',
             {
                 name: userName,
                 email,
@@ -105,17 +105,19 @@ const Contact = () => {
 
             <div>
                 <h5>You can also contact us in one of this options:</h5>
-                <p>
-                    Email:
-                    <Link to='#' onClick={() => window.location = 'mailto:hodaya1abu@gmail.com'}>
-                        hodaya1abu@gmail.com
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <br />
+                    <Link to='#' onClick={() => window.location = 'mailto:sellbuy442u@gmail.com'}>
+                        sellbuy442u@gmail.com
                     </Link>
                     <br />
-                    Phone:
+                    <label htmlFor="phone">Phone: </label>
+                    <br />
                     <Link to='#' onClick={() => window.location = 'tel:0587611770'}>
                         0587611770
                     </Link>
-                </p>
+                </div>
             </div>
         </>
     )

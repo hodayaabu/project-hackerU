@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
 
+//Import css:
+import '../css/home.css';
+
 const Home = () => {
     const [cardsArr, setCardsArr] = useState([]);
     const [show, setShow] = useState(false);
@@ -68,8 +71,9 @@ const Home = () => {
 
     return (
         <>
-            <div>
-                <h3> Welcome to BUY & SELL site!</h3>
+            <h1> Welcome to BUY & SELL site!</h1>
+            <div className=" info">
+
                 <p>
                     Need a sofa for the living room?
                     <br />
@@ -83,6 +87,7 @@ const Home = () => {
                     Happy shopping!✌🏼👍🏼👌🏼
                 </p>
             </div>
+
 
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 {cardsArr.map((item) => {

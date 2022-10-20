@@ -1,4 +1,4 @@
-const { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd } = require("../validations/user.validation");
+const { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd, validateUserMsg } = require("../validations/user.validation");
 const validateAuth = require('../validations/auth.validation');
 const User = require("../model/users");
 const { Card } = require("../model/cards");
@@ -370,7 +370,9 @@ router.post('/forgotPassword', async (req, res) => {
       from: 'sellbuy442@gmail.com',
       to: email,
       subject: 'Password reset for SELL&BUY site',
-      text: 'Click here to reset your password: ' + link
+      html: `
+      <h1>Here is a link to reset your password:</h1>
+      <div><a href=${link}>click here!</a></div>`
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -439,6 +441,69 @@ router.post('/resetPassword/:id/:token', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(401).json({ message: "Something went wrong.", err });
+  }
+});
+
+
+//Contact from user:
+router.post('/newMsg', async (req, res) => {
+  try {
+    //Validation for the data from the user:
+    const { error } = validateUserMsg(req.body);
+
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
+
+    const { name, email, msg } = req.body;
+
+    //Check in the database if user already exists by email:
+    let user = await User.findOne({ email });
+    if (user) {
+      let userId = user._id
+    } else {
+      userId = 'Unregistered user';
+    }
+
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: config.get('email.adminMail'),
+        pass: config.get('email.pwdMail'),
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+
+    });
+
+
+    const mailOptions = {
+      from: 'sellbuy442@gmail.com',
+      to: 'sellbuy442@gmail.com',
+      subject: 'Contact msg from a user',
+      html: `
+        <h3>You received a message from ${name}, userId: ${userId}</h3>
+        <p>${msg}</p>
+        <p>Email to response : ${email}</p>`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.send(error.response)
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+    res.send('Your message has been saved and we will get back to you soon');
+
+  } catch (err) {
+    console.log('err from add new user msg:', err);
+    res.status(401).send(err);
   }
 });
 

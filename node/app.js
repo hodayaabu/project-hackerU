@@ -5,7 +5,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const usersRouter = require('./routes/users');
-const userMsgsRouter = require('./routes/userMsgs');
 const cardsRouter = require('./routes/cards');
 
 const app = express();
@@ -31,7 +30,6 @@ app.use(express.urlencoded({ extended: false }))
 
 //Routeing:
 app.use('/users', usersRouter);
-app.use('/msgs', userMsgsRouter);
 app.use('/cards', cardsRouter);
 
 
