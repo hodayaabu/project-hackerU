@@ -5,6 +5,9 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 
+//import css
+import '../css/login&signup.css';
+
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9_]{3,23}$/
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
 const PHONE_REGEX = /^(\+\d{1,3}[- ]?)?\d{10}$/;
@@ -120,7 +123,7 @@ const Signup = () => {
                     <Link to={'/login'}>Sign In</Link>
                 </section >
             ) : (
-                <div className="container">
+                <section>
                     <h1>Signup</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
@@ -251,15 +254,13 @@ const Signup = () => {
                                 <span aria-label="percent">%</span>
                             </p>
                         </div>
-                        <button type="submit" className="btn btn-primary" disabled={!validUserName || !validCity || !validEmail || !validPhone || !validPassword ? true : false}>Sign Up</button>
+                        <p>
+                            <Link to={'/login'} className="loginLink"> Already registered?</Link>
+                        </p>
+                        <button type="submit" className="btn signUpBtn" disabled={!validUserName || !validCity || !validEmail || !validPhone || !validPassword ? true : false}>Sign Up</button>
 
                     </form>
-                    <p>
-                        Already registered?
-                        <br />
-                        <Link to={'/login'}>Login</Link>
-                    </p>
-                </div>
+                </section>
             )}
         </>
 

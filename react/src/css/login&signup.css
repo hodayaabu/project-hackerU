@@ -3,20 +3,13 @@
 section {
     width: 100%;
     max-width: 420px;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-form.signupForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
+    border: 3px solid rgb(1, 1, 65);
+    color: rgb(1, 1, 65);
+    border-radius: 5%;
+    margin: auto;
 }
 
 input[type="text"],
@@ -24,7 +17,6 @@ input[type="password"],
 button,
 textarea {
     font-family: 'Nunito', sans-serif;
-    font-size: 22px;
     padding: 0.25rem;
     border-radius: 0.5rem;
 }
@@ -34,14 +26,30 @@ button {
     margin-top: 1rem;
 }
 
-button {
+button.loginBtn,
+.signUpBtn,
+.forgotPwdBtn,
+.contactFormBtn {
     padding: 0.5rem;
+    background-color: rgb(1, 1, 65);
+    color: white;
+    width: 100%;
+}
+
+button.loginBtn:hover,
+.signUpBtn:hover,
+.forgotPwdBtn:hover,
+.contactFormBtn:hover {
+    padding: 0.5rem;
+    background-color: rgb(1, 1, 65);
+    color: white;
+    width: 100%;
 }
 
 .instructions {
     font-size: 0.75rem;
     border-radius: 0.5rem;
-    background: #000;
+    background: rgb(1, 1, 65);
     color: #fff;
     padding: 0.25rem;
     position: relative;
@@ -81,4 +89,26 @@ button {
 
 .line {
     display: inline-block;
+}
+
+.forgotPwdLink,
+.signUpLink,
+.loginLink,
+.emailLink,
+.phoneLink {
+    color: rgb(129, 93, 2);
+    font-weight: 600;
+}
+
+.forgotPwdLink:hover,
+.signUpLink:hover,
+.loginLink:hover,
+.emailLink:hover,
+.phoneLink:hover {
+    color: rgb(1, 1, 56);
+    font-weight: 600;
+}
+
+div.contact {
+    display: flex;
 }

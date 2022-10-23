@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -65,59 +64,63 @@ const Contact = () => {
     };
     return (
         <>
-            <h3>We are here for you!</h3>
-            <p>
-                We will be happy to hear from you about any comments, requests or questions.
-                All you need to do is fill out the form below.
-            </p>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Your name</Form.Label>
-                    <Form.Control type="text" onChange={handleUserNameChange} value={userName} required controlId="formBasicText" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicText">
-                    <Form.Label>
-                        Email address for reply
-                        <span className={validEmail ? "valid" : "hide"}>
-                            <FontAwesomeIcon icon={faCheck} />
-                        </span>
-                        <span className={validEmail || !email ? "hide" : "invalid"}>
-                            <FontAwesomeIcon icon={faTimes} />
-                        </span>
-                    </Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} value={email} required email aria-describedby="emailnote" />
-                    <p id="emailnote" className={email && !validEmail ? "instructions" : "offscreen"}>
-                        <FontAwesomeIcon icon={faInfoCircle} />
-                        Please enter a valid email.
+            <h1>We here for you!</h1>
+            <div className='contact'>
+                <section>
+                    <p>
+                        <strong> We will be happy to hear from you about any comments, requests or questions.
+                            All you need to do is fill out the form below.</strong>
                     </p>
-                </Form.Group>
-                <Form.Label>Leave your message here</Form.Label>
-                <FloatingLabel controlId="floatingTextarea2" onChange={handleDescriptionChange} value={description} required>
-                    <Form.Control
-                        as="textarea"
-                        style={{ height: '100px' }}
-                    />
-                </FloatingLabel>
-                <Button variant="primary" type="submit" disabled={!validEmail || !description ? true : false}>
-                    Submit
-                </Button>
-            </Form>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Your name</Form.Label>
+                            <Form.Control type="text" onChange={handleUserNameChange} value={userName} required controlId="formBasicText" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicText">
+                            <Form.Label>
+                                Email address for reply
+                                <span className={validEmail ? "valid" : "hide"}>
+                                    <FontAwesomeIcon icon={faCheck} />
+                                </span>
+                                <span className={validEmail || !email ? "hide" : "invalid"}>
+                                    <FontAwesomeIcon icon={faTimes} />
+                                </span>
+                            </Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} value={email} required email aria-describedby="emailnote" />
+                            <p id="emailnote" className={email && !validEmail ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                Please enter a valid email.
+                            </p>
+                        </Form.Group>
+                        <Form.Label>Leave your message here</Form.Label>
+                        <FloatingLabel controlId="floatingTextarea2" onChange={handleDescriptionChange} value={description} required>
+                            <Form.Control
+                                as="textarea"
+                                style={{ height: '100px' }}
+                            />
+                        </FloatingLabel>
+                        <button className='contactFormBtn' type="submit" disabled={!validEmail || !description ? true : false}>
+                            Submit
+                        </button>
+                    </Form>
 
-            <div>
-                <h5>You can also contact us in one of this options:</h5>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <br />
-                    <Link to='#' onClick={() => window.location = 'mailto:sellbuy442u@gmail.com'}>
-                        sellbuy442u@gmail.com
-                    </Link>
-                    <br />
-                    <label htmlFor="phone">Phone: </label>
-                    <br />
-                    <Link to='#' onClick={() => window.location = 'tel:0587611770'}>
-                        0587611770
-                    </Link>
-                </div>
+                </section>
+                <section>
+                    <p><strong>You can also contact us in one of this options:</strong></p>
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <br />
+                        <Link to='#' className='emailLink' onClick={() => window.location = 'mailto:sellbuy442u@gmail.com'}>
+                            sellbuy442u@gmail.com
+                        </Link>
+                        <br />
+                        <label htmlFor="phone">Phone: </label>
+                        <br />
+                        <Link to='#' className='phoneLink' onClick={() => window.location = 'tel:0587611770'}>
+                            0587611770
+                        </Link>
+                    </div>
+                </section>
             </div>
         </>
     )

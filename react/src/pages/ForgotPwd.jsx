@@ -4,6 +4,9 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 
+//import css:
+import '../css/login&signup.css';
+
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
 
 const ForgotPwd
@@ -82,7 +85,7 @@ const ForgotPwd
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary" disabled={!validEmail || !email ? true : false}>
+                    <button type="submit" className="btn forgotPwdBtn" disabled={!validEmail || !email ? true : false}>
                         Submit
                     </button>
                 </form>

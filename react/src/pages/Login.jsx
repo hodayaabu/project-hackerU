@@ -140,20 +140,16 @@ const Login = () => {
                 </div>
                 <div>
                     <p>
-                        <Link to={'/forgotPwd'}>You forgot your password?</Link>
+                        <Link className="forgotPwdLink" to={'/forgotPwd'}>forgot password?</Link>
+                    </p>
+                    <p>
+                        <Link className="signUpLink" to={'/signup'}>Sign up</Link>
                     </p>
                 </div>
-                <button type="submit" className="btn btn-primary" disabled={!validEmail || !validPassword ? true : false}>
+                <button type="submit" className="btn loginBtn" disabled={!validEmail || !validPassword ? true : false}>
                     Submit
                 </button>
             </form>
-
-            <div>
-                <h6> You are not registered?
-                    <br />
-                    <Link to={'/signup'}>Sign up</Link>
-                </h6>
-            </div>
         </section>
     );
 

@@ -63,11 +63,11 @@ const MainNavigator = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                         {loggedIn ? (
-                            <li className="nav-item active">
+                            <li className="nav-item active logout">
                                 <NavLink className="nav-link" to="/logout" exact>Logout</NavLink>
                             </li>
                         ) : (
-                            <li className="nav-item active">
+                            <li className="nav-item active login">
                                 <NavLink className="nav-link" to="/login" exact>Login</NavLink>
                             </li>
                         )}
