@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DeleteItem from "./DeleteItem";
 
-const Card = (props) => {
+const MyCard = (props) => {
     const [editing, setEditing] = useState(false);
     const [updatedDescription, setUpdateDescription] = useState(props.desc);
     const [updatedPrice, setUpdatedPrice] = useState(props.price);
@@ -82,4 +82,4 @@ const Card = (props) => {
     );
 };
 
-export default Card;
+export default MyCard;

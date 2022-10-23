@@ -13,3 +13,23 @@ div.info {
     margin: auto;
     font-size: large;
 }
+
+h5 {
+    text-align: center;
+    background-color: rgb(1, 1, 56);
+    color: white;
+    padding: 1%;
+    margin-top: 5%;
+    width: 100%;
+    border-radius: 10%;
+}
+
+.productsLink {
+    color: rgb(129, 93, 2);
+    float: right;
+    font-weight: 600
+}
+
+.productsLink:hover {
+    color: rgb(1, 1, 56);
+}

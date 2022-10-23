@@ -4,19 +4,13 @@ import { useEffect, useState } from "react"
 import { Modal } from 'react-bootstrap';
 import { BsHeart } from 'react-icons/bs'
 
+import '../../css/card.css';
+
 const FavoriteProducts = () => {
     const [cardsArr, setCardsArr] = useState([]);
     const [show, setShow] = useState(false);
     const [product, setProduct] = useState({});
 
-    const style = {
-        width: "100%",
-    }
-
-    const cardStyle = {
-        width: '25%',
-        margin: '3%'
-    }
 
     const handleClose = () => {
         setShow(false);
@@ -94,8 +88,8 @@ const FavoriteProducts = () => {
                 <div className="row row-cols-1 row-cols-md-3 g-4 mx-auto">
                     {cardsArr.map((item) => {
                         return (
-                            <div className="card" style={cardStyle} key={item._id}>
-                                <img className="productPic" src={item.image} style={style} alt="Product pic" />
+                            <div className="card" key={item._id}>
+                                <img className="productPic" src={item.image} alt="Product pic" />
                                 <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
                                 <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
 
@@ -104,19 +98,18 @@ const FavoriteProducts = () => {
                                 <Modal show={show} onHide={handleClose}>
 
                                     <Modal.Header>
-                                        <img className="productPic" src={product.image} style={style} alt="Product pic" />
+                                        <img className="productPic" src={product.image} alt="Product pic" />
                                     </Modal.Header>
                                     <Modal.Body>
                                         <h5>About the product:</h5>
                                         <p className="card-text">{product.description}</p>
                                         <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
                                         <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
+                                        <p className="card-text"> <strong>Created At:</strong> {product.creationDate}</p>
                                         <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
-                                        <span onClick={() => handleRemoveFavorite(product._id)}><BsHeart /> Remove from favorites</span>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        Created at: {product.creationDate}
-                                        <button type="button" onClick={handleClose} className="btn btn-secondary">Close</button>
+                                        <span onClick={() => handleRemoveFavorite(product._id)}><BsHeart /> Remove from favorites</span>
                                     </Modal.Footer>
                                 </Modal>
 

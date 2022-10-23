@@ -20,6 +20,7 @@ import Home from './pages/Home';
 import AllProducts from "./pages/Products/AllProducts";
 import MyProducts from "./pages/Products/MyProducts";
 import AddProduct from "./pages/Products/AddProduct";
+import FavoriteProducts from "./pages/Products/FavoriteProducts";
 import Sport from "./pages/Products/Types/Sport";
 import Electronics from "./pages/Products/Types/Electronics";
 import Fashion from "./pages/Products/Types/Fashion";
@@ -28,7 +29,6 @@ import Other from "./pages/Products/Types/Other";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import Profile from "./pages/Profile";
-import FavoriteProducts from "./pages/FavoriteProducts";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App = () => {

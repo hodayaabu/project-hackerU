@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Card from "../../components/Card";
+import MyCard from "../../components/MyCard";
 
 const MyProducts = () => {
     const [cardsArr, setCardsArr] = useState([]);
@@ -59,11 +59,11 @@ const MyProducts = () => {
 
     return (
         <>
-            <h3>My Products</h3>
+            <h5>My Products</h5>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {cardsArr.map((item) => {
                     return (
-                        <Card
+                        <MyCard
                             name={item.name}
                             phone={item.phone}
                             desc={item.description}

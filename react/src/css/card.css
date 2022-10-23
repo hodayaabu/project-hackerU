@@ -1,0 +1,52 @@
+h5 {
+    text-align: center;
+    background-color: rgb(1, 1, 56);
+    color: white;
+    padding: 1%;
+    margin-top: 5%;
+    width: 100%;
+    border-radius: 10%;
+}
+
+select {
+    color: rgb(129, 93, 2);
+    font-size: large;
+    border: 2px solid rgb(129, 93, 2);
+    border-radius: 10%;
+    padding: 0.5%;
+    float: right;
+
+}
+
+div.cardsWrapper {
+    justify-content: center;
+    margin: 5%;
+}
+
+div.card {
+    margin: 3%;
+    padding: 0%;
+}
+
+div.card:hover {
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 30%);
+}
+
+p.card-text {
+    margin: 2%;
+    color: rgb(1, 1, 56);
+}
+
+button.btnShowMore {
+    color: rgb(1, 1, 56);
+    border: 3px solid rgb(1, 1, 56);
+}
+
+button.btnShowMore:hover {
+    background-color: rgb(1, 1, 56);
+    color: white;
+}
+
+img.productPic {
+    width: 100%;
+}

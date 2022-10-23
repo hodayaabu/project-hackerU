@@ -1,6 +1,6 @@
 div.links {
-    border-top: 5px solid rgb(129, 93, 2);
-    margin-top: 2%;
+    border-top: 10px solid rgb(129, 93, 2);
+    margin-top: 10%;
     padding: 2%;
     background-color: rgb(1, 1, 56);
     text-align: center;
@@ -10,6 +10,10 @@ div.links {
     text-decoration: none;
     color: white;
     padding: 0 10%;
+}
+
+.emailIcon {
+    color: white;
 }
 
 .link:hover {

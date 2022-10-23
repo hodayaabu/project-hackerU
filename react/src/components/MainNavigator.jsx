@@ -72,7 +72,7 @@ const MainNavigator = () => {
                             </li>
                         )}
 
-                        <li className="nav-item dropdown">
+                        <li className="nav-item btn-group">
                             <NavLink to="dropdown-menu" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Me
                             </NavLink>
@@ -83,9 +83,20 @@ const MainNavigator = () => {
                             </ul>
                         </li>
 
-                        <li className="nav-item active">
-                            <NavLink className="nav-link" to="/products" exact>Products</NavLink>
+                        <li className="nav-item btn-group">
+                            <NavLink to="dropdown-menu" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </NavLink>
+                            <ul className="dropdown-menu">
+                                <li><NavLink className="dropdown-item" to="/products">All Products</NavLink></li>
+                                <li><NavLink className="dropdown-item" to="/electronics">Electronics</NavLink></li>
+                                <li><NavLink className="dropdown-item" to="/fashion">Fashion</NavLink></li>
+                                <li><NavLink className="dropdown-item" to="/furniture">Furniture</NavLink></li>
+                                <li><NavLink className="dropdown-item" to="/sport">Sport</NavLink></li>
+                                <li><NavLink className="dropdown-item" to="/other">Other</NavLink></li>
+                            </ul>
                         </li>
+
                         <li className="nav-item active">
                             <NavLink className="nav-link" to="/addProduct" exact>Add Product</NavLink>
                         </li>
