@@ -35,11 +35,11 @@ const MyCard = (props) => {
                     <p className="card-text">{props.desc}</p>
                     <p className="card-text"> <strong>Type:</strong> {props.type}</p>
                     <p className="card-text"> <strong>Price:</strong> {props.price}$</p>
+                    <p className="card-text"> <strong>Created at:</strong> {props.creationDate}</p>
                     <p className="card-text"> <strong>Contact: </strong> {props.name} - {props.phone}</p>
                 </div>
 
                 <div className="card-footer">
-                    Created at: {props.creationDate}
                     <DeleteItem onDelete={props.onDelete} id={props.id} />
                 </div>
             </div>

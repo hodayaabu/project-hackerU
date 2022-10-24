@@ -1,0 +1,14 @@
+input[type="text"] {
+    width: 100%;
+}
+
+button.updateProfileBtn {
+    background-color: rgb(1, 1, 56);
+    color: white;
+}
+
+button.updateProfileBtn:hover {
+    background-color: white;
+    color: rgb(1, 1, 56);
+    border: 2px solid rgb(1, 1, 56);
+}

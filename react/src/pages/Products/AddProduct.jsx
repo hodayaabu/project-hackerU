@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlusCircle } from "react-icons/fa";
 
+import '../../css/addProduct.css'
+
 const AddProduct = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -60,8 +62,9 @@ const AddProduct = () => {
 
     return (
         <>
-            <h3>Add New Product: </h3>
-            <div >
+
+            <section>
+                <h4>Add New Product: </h4>
                 <form className="CardForm" onSubmit={handleSubmit}>
 
                     <label htmlFor="imageInput">Write image link here:</label>
@@ -75,8 +78,7 @@ const AddProduct = () => {
                     />
 
                     <label htmlFor="descriptionInput">Write description about the product here:</label>
-                    <input
-                        type="text"
+                    <textarea
                         className="form-control"
                         id="descriptionInput"
                         value={description}
@@ -104,11 +106,11 @@ const AddProduct = () => {
                             <option value="other">other</option>
                         </select>
                     </div>
-                    <button type="submit" disabled={!description || !price || !type || !image ? true : false}>
-                        <FaPlusCircle />
+                    <button className="btn addProductBtn" type="submit" disabled={!description || !price || !type || !image ? true : false}>
+                        <FaPlusCircle /> Add Product
                     </button>
                 </form>
-            </div>
+            </section>
         </>
     )
 };

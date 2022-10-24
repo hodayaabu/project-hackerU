@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-section {
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border: 3px solid rgb(1, 1, 65);
-    color: rgb(1, 1, 65);
-    border-radius: 5%;
-    margin: auto;
-}
-
 input[type="text"],
 input[type="password"],
 button,
@@ -111,4 +99,5 @@ button.loginBtn:hover,
 
 div.contact {
     display: flex;
+    margin: 2%;
 }

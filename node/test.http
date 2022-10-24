@@ -17,8 +17,8 @@ Content-Type: application/json
     "password": "Admin770@",
     "phone": "0587611770",
     "favoriteCards": [],
-    "admin": "Yes"
-}
+    "admin": true 
+    }
 
 
 ### Login user:
@@ -48,8 +48,8 @@ Content-Type: application/json
 
 ### Delete user by id:
 DELETE  {{local}}/users/deleteUser
-admin-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJpYXQiOjE2NjYyNTQ3NzJ9.N9Pu5WrTbuyB43kF1crRYKqPT1G51QhGNFFsn1hHGfA
-user-id: 632ac83b48d3193ebfae11db
+admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
+user-id: 635106cfe51cd892bc34d223
 
 
 ### Get all user favorite cards:

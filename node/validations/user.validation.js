@@ -7,7 +7,7 @@ function validateUser(user) {
         email: Joi.string().min(9).max(225).required().email(),
         password: Joi.string().min(8).max(225).required(),
         phone: Joi.string().min(9).max(13).required(),
-        admin: Joi.string(),
+        admin: Joi.boolean(),
         favoriteCards: Joi.array()
     });
 

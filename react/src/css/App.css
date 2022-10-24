@@ -6,4 +6,37 @@
 
 body {
     color: rgb(1, 1, 56);
+    min-height: 100hv;
+}
+
+h1 {
+    color: rgb(129, 93, 2);
+    text-align: center;
+    margin: 2%;
+}
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+    background-color: rgb(1, 1, 56);
+    color: white;
+    padding: 1%;
+    margin-top: 5%;
+    width: 100%;
+    border-radius: 10%;
+}
+
+section {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 3px solid rgb(1, 1, 65);
+    color: rgb(1, 1, 65);
+    border-radius: 5%;
+    margin: auto;
 }

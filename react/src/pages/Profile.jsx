@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 
+//import style: 
+import '../css/profile.css';
+
 const Profile = () => {
     const [editing, setEditing] = useState(false);
     const [user, setUser] = useState({});
@@ -59,48 +62,52 @@ const Profile = () => {
     }
 
     return (
-        <div className="card" >
-            <div className="col" onDoubleClick={handleEditing} style={viewMode}>
-                <h5 className="card-title">{name}</h5>
-                <div className="card-body">
-                    <p className="card-text">{city}</p>
-                    <p className="card-text">{email}</p>
-                    <p className="card-text">{phone}</p>
+        <section>
+            <div  >
+                <div className="col" onDoubleClick={handleEditing} style={viewMode}>
+                    <h5 className="card-title">{name}</h5>
+                    <div className="card-body">
+                        <p className="card-text">{city}</p>
+                        <p className="card-text">{email}</p>
+                        <p className="card-text">{phone}</p>
+                    </div>
+                </div>
+
+                <div className="editMode" style={editMode}>
+                    <label>Name:</label>
+                    <br />
+                    <input
+                        type="text"
+                        style={editMode}
+                        value={updatedName}
+                        onChange={(e) => setUpdateName(e.target.value)}
+                    />
+                    <br />
+                    <br />
+                    <label>City:</label>
+                    <br />
+                    <input
+                        type="text"
+                        style={editMode}
+                        value={updatedCity}
+                        onChange={(e) => setUpdateCity(e.target.value)}
+                    />
+                    <br />
+                    <br />
+                    <label>Phone:</label>
+                    <br />
+                    <input
+                        type="text"
+                        style={editMode}
+                        value={updatedPhone}
+                        onChange={(e) => setUpdatePhone(e.target.value)}
+                    />
+                    <br />
+                    <br />
+                    <button className="btn updateProfileBtn" onClick={handleBtnUpdate} style={editMode}>Update</button>
                 </div>
             </div>
-
-            <div style={editMode}>
-                <label>Name:</label>
-                <input
-                    type="text"
-                    style={editMode}
-                    value={updatedName}
-                    onChange={(e) => setUpdateName(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>City:</label>
-                <input
-                    type="text"
-                    style={editMode}
-                    value={updatedCity}
-                    onChange={(e) => setUpdateCity(e.target.value)}
-                />
-                <br />
-                <br />
-                <label>Phone:</label>
-                <input
-                    type="text"
-                    style={editMode}
-                    value={updatedPhone}
-                    onChange={(e) => setUpdatePhone(e.target.value)}
-                />
-                <br />
-                <br />
-                <button onClick={handleBtnUpdate} style={editMode}>Update</button>
-            </div>
-        </div>
-
+        </section>
     );
 };
 

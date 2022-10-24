@@ -59,28 +59,40 @@ const MyProducts = () => {
 
     return (
         <>
-            <h5>My Products</h5>
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-                {cardsArr.map((item) => {
-                    return (
-                        <MyCard
-                            name={item.name}
-                            phone={item.phone}
-                            desc={item.description}
-                            price={item.price}
-                            creationDate={item.creationDate}
-                            image={item.image}
-                            type={item.productType}
-                            id={item._id}
-                            key={item._id}
-                            onDelete={handleDeleteCard}
-                            setUpdateCard={handleUpdateCard}
-                        />
-                    );
-                })}
-            </div>
+            {cardsArr.length > 0 ? (
+                <div className="container">
+                    <h5>My Products</h5>
+                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                        {cardsArr.map((item) => {
+                            return (
+                                <MyCard
+                                    name={item.name}
+                                    phone={item.phone}
+                                    desc={item.description}
+                                    price={item.price}
+                                    creationDate={item.creationDate}
+                                    image={item.image}
+                                    type={item.productType}
+                                    id={item._id}
+                                    key={item._id}
+                                    onDelete={handleDeleteCard}
+                                    setUpdateCard={handleUpdateCard}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            ) : (
+                <div className="container">
+                    <h4>You have not uploaded any products yet</h4>
+                </div>
+            )}
         </>
     )
 };
 
 export default MyProducts;
+
+
+
+

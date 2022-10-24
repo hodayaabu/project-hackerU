@@ -1,9 +1,3 @@
-h1 {
-    color: rgb(129, 93, 2);
-    text-align: center;
-    margin: 2%;
-}
-
 div.info {
     width: 100%;
     height: 80%;
@@ -12,16 +6,6 @@ div.info {
     border-radius: 10%;
     margin: auto;
     font-size: large;
-}
-
-h5 {
-    text-align: center;
-    background-color: rgb(1, 1, 56);
-    color: white;
-    padding: 1%;
-    margin-top: 5%;
-    width: 100%;
-    border-radius: 10%;
 }
 
 .productsLink {

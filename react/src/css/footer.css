@@ -1,3 +1,9 @@
+div.footer {
+    margin-bottom: 0;
+    margin-top: 5;
+    width: 100%;
+}
+
 div.links {
     border-top: 10px solid rgb(129, 93, 2);
     margin-top: 10%;
@@ -31,7 +37,8 @@ div.mainFooter {
     padding: 2%;
     background-color: rgb(1, 1, 56);
     text-align: center;
-    color: white
+    color: white;
+    margin: 0;
 }
 
 .blockquote-footer {

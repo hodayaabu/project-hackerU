@@ -1,0 +1,9 @@
+button.addProductBtn {
+    width: 100%;
+    background-color: rgba(1, 1, 56);
+    color: white;
+}
+
+button.addProductBtn:hover {
+    color: white;
+}
