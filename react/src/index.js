@@ -30,7 +30,7 @@ axios.interceptors.request.use((config) => {
   if (token) {
 
     //add token to headers for secure routes
-    config.headers["user-token"] = token;
+    config.headers["token"] = token;
   }
 
   config.headers["Content-Type"] = "application/json";

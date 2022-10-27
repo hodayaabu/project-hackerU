@@ -32,7 +32,7 @@ const Users = () => {
     }, []);
 
     const handleDeleteUser = (id) => {
-        axios.delete('/users/deleteUser', { headers: { 'admin-token': localStorage.getItem("token"), 'user-id': id } })
+        axios.delete('/users/deleteUser', { headers: { 'user-id': id } })
             .then((response) => {
                 setUsersArr(response.data);
                 toast('The user has been deleted successfully')

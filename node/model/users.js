@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
 
 //Create new method to generate auth token for user:
 userSchema.methods.generateAuthToken = function () {
-    return jwt.sign({ _id: this._id, email: this.email }, config.get("jwtKey"));
+    return jwt.sign({ _id: this._id, email: this.email, admin: this.admin }, config.get("jwtKey"));
 }
 
 //Add to the collection in db:

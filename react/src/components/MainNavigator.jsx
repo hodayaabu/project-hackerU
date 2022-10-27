@@ -1,9 +1,7 @@
 import React from "react";
-import axios from "axios";
-import { NavLink, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { adminActions } from "../store/admin.redux";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 //import css
 import '../css/navbar.css';
@@ -13,39 +11,6 @@ const MainNavigator = () => {
     const loggedIn = useSelector((state) => state.auth.loggedIn);
     const isAdmin = useSelector((state) => state.admin.isAdmin);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const handleAdminCheck = (e) => {
-        e.preventDefault();
-        axios
-            .get("/users/me")
-            .then((response) => {
-                if (response.data.admin) {
-                    dispatch(adminActions.admin());
-                    toast('you logged in as an admin')
-                    history.push('/Users');
-                } else {
-                    toast.error('Access denied, you are not an admin');
-                    history.push('/MyFeedbacks');
-
-                }
-            })
-            .catch((err) => {
-                console.log("err.request", err.request);
-
-                if (err.response) {
-                    //error from server
-                    console.log('from admin:', err.response.data);
-                    toast.error(err.response.data)
-                } else if (err.request) {
-                    //error if server not responding
-                    toast.error('Something went wrong')
-                } else {
-                    toast.error('Something went wrong')
-                }
-            });
-    }
 
     return (
         <>
@@ -111,10 +76,6 @@ const MainNavigator = () => {
                             </li>
                         ) : null}
                     </ul>
-
-                    {loggedIn ? (
-                        <button className=" btn btn-outline-info" onClick={handleAdminCheck}>are you Admin?</button>
-                    ) : null}
 
                 </div>
             </nav></>

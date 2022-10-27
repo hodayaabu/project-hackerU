@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../store/auth.redux";
+import { adminActions } from "../store/admin.redux";
 import { toast } from "react-toastify";
 
 //import css
@@ -57,6 +58,11 @@ const Login = () => {
                 //save token from server to local storage
                 localStorage.setItem("token", response.data.token);
                 dispatch(authActions.login());
+
+                if (response.data.admin) {
+                    dispatch(adminActions.admin());
+                    toast('you logged in as an admin')
+                }
                 toast('you logged in successfully');
                 history.push('/myCards');
 
@@ -74,7 +80,10 @@ const Login = () => {
                     toast.error('Something went wrong')
                 }
             });
+
     }
+
+
 
     return (
         <section>

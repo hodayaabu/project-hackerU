@@ -40,7 +40,7 @@ const Logout = () => {
         <>
             {loggedIn ? (
                 <div className="mb-3">
-                    <h4>Hey {userName} :)</h4>
+                    <h3>Hey {userName} :)</h3>
                     <p> Do you want to log out?</p>
                     <button onClick={handleLogout} type="button" className="btn btn-danger">Logout</button>
                 </div>

@@ -4,20 +4,19 @@
 
 //Get all users:
 GET {{local}}/users/allUsers
-admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2M3MmYzMTk4Y2NiNTQwYTNhNzUiLCJlbWFpbCI6IkFkbWluQGdtYWlsLmNvbSIsImFkbWluIjp0cnVlLCJpYXQiOjE2NjY4NTgxMTB9.NFpCzxtwCA-WOj4Hfn1nQQyqajn3eXcxqtMVzvwL1DU
 
 ###Add new user:
 POST  {{local}}/users/signup
 Content-Type: application/json
 
 {
-    "name": "Admin",
+    "name": "Mike",
     "city": "NewYork", 
-    "email": "sellbuy442@gmail.com",
-    "password": "Admin770@",
+    "email": "Mike@gmail.com",
+    "password": "Mike770@",
     "phone": "0587611770",
-    "favoriteCards": [],
-    "admin": true 
+    "favoriteCards": [] 
     }
 
 
@@ -26,14 +25,14 @@ POST  {{local}}/users/login
 Content-Type: application/json
 
 {
-    "email": "hodaya@gmail.com",
-    "password": "Hodaya770@"
+    "email": "Mike@gmail.com",
+    "password": "Mike770@"
 }
 
 
 ### Get user by token:
 GET {{local}}/users/me
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
 
 
 ### Update user by email:
@@ -48,18 +47,18 @@ Content-Type: application/json
 
 ### Delete user by id:
 DELETE  {{local}}/users/deleteUser
-admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
-user-id: 635106cfe51cd892bc34d223
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzU2MzczOThjNjc4NzYxMGYwNDY1ZmMiLCJlbWFpbCI6InNlbGxidXk0NDJAZ21haWwuY29tIiwiaWF0IjoxNjY2ODU0NjEyfQ.zVoCa6um1ToKMyN4Vi78yn2toq2wCuOlN5IOIen_KfU
+user-id: 632ac688a05fb0e860110dbf
 
 
 ### Get all user favorite cards:
 GET {{local}}/users/favoriteCards
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
 
 
 ### Add new favorite card:
 PATCH {{local}}/users/addFavorite
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzUxMDRlNTk0NDI2YThlOGEzZGU3YjAiLCJlbWFpbCI6InJvbml0YWJ1NjY2QGdtYWlsLmNvbSIsImFkbWluIjoiTm8iLCJpYXQiOjE2NjYyNTQwNzd9.ZPM03Ko1NwaWLO56tT3fDMTxRmAKOWXGK4LoonFqdAI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzUxMDRlNTk0NDI2YThlOGEzZGU3YjAiLCJlbWFpbCI6InJvbml0YWJ1NjY2QGdtYWlsLmNvbSIsImFkbWluIjoiTm8iLCJpYXQiOjE2NjYyNTQwNzd9.ZPM03Ko1NwaWLO56tT3fDMTxRmAKOWXGK4LoonFqdAI
 Content-Type: application/json
 
 {
@@ -68,7 +67,7 @@ Content-Type: application/json
 
 ### Remove favorite card:
 PATCH {{local}}/users/removeFavorite
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
 Content-Type: application/json
 
 {
@@ -83,14 +82,6 @@ Content-Type: application/json
 {
     "email": "dkhn724@gmail.com"
 }
-
-
-////// Messages from users ////////
-
-###Get all users messages:
-GET {{local}}/msgs/allUsersMsg
-admin-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
-
 
 ###Add new user message:
 POST {{local}}/msgs/newMsg
@@ -111,7 +102,7 @@ GET {{local}}/cards/allCards
 
 ### Add new card:
 POST {{local}}/cards
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
 Content-Type: application/json
 
 {
@@ -130,7 +121,7 @@ id-card: 630b335ba895014c972e4e5d
 ### Update card by id:
 PATCH  {{local}}/cards/myCard
 id-card: 6314693a7c62e0ae1f664fed
-user-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmJkNWMxYzdiYjYyODYxNjhhZmIzYzciLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJpYXQiOjE2NTY1NzkxMDJ9.HLkM4NL6HgUVhvIK6ivK1LJHlGHASeDoe4BI8FCvYrI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmJkNWMxYzdiYjYyODYxNjhhZmIzYzciLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJpYXQiOjE2NTY1NzkxMDJ9.HLkM4NL6HgUVhvIK6ivK1LJHlGHASeDoe4BI8FCvYrI
 Content-Type: application/json
 
 {
@@ -142,12 +133,12 @@ Content-Type: application/json
 ### Dalate card by id:
 DELETE  {{local}}/cards/myCard
 id-card: 63146beb7c62e0ae1f665012
-user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
 
 
 ### Get all user cards
 GET {{local}}/cards/myAllCards
-user-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
 
 ### Get all cards by type
 GET {{local}}/cards/Sport

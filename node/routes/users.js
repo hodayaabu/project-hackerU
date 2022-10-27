@@ -3,7 +3,6 @@ const validateAuth = require('../validations/auth.validation');
 const User = require("../model/users");
 const { Card } = require("../model/cards");
 const auth = require("../middleware/auth");
-const authAdmin = require("../middleware/authAdmin");
 
 const config = require("config");
 const jwt = require("JsonWebToken");
@@ -15,7 +14,11 @@ const express = require('express');
 const router = express.Router();
 
 //Get all users:
-router.get('/allUsers', authAdmin, async (req, res) => {
+router.get('/allUsers', auth, async (req, res) => {
+  if (req.user.admin === false) {
+    res.status(401).send("Access denied, you are not an admin");
+    return;
+  }
   try {
     const allUsers = await User.find();
     if (!allUsers) {
@@ -101,10 +104,9 @@ router.post('/login', async (req, res) => {
 
     //Create the token:
     const token = user.generateAuthToken();
+    const admin = user.admin
 
-    res.send({
-      token,
-    });
+    res.send({ token, admin });
 
   } catch (err) {
     console.log('err from auth:', err);
@@ -166,7 +168,12 @@ router.patch('/update', async (req, res) => {
 
 
 //Delete user:
-router.delete('/deleteUser', authAdmin, async (req, res) => {
+router.delete('/deleteUser', auth, async (req, res) => {
+
+  if (req.user.admin === false) {
+    res.status(401).send("Access denied, you are not an admin");
+    return;
+  }
 
   let user = await User.findById({ _id: req.user._id });
 
