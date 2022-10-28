@@ -1,0 +1,16 @@
+div.contact {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+div.contactForm,
+div.contactInfo {
+    border: 3px solid rgb(1, 1, 65);
+    padding: 1rem;
+    color: rgb(1, 1, 65);
+    border-radius: 5%;
+    margin: 2%;
+}

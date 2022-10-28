@@ -93,11 +93,13 @@ const Electronics = () => {
             {cardsArr.length > 0 ? (
                 <div>
                     <h5>All Electronics Product:</h5>
+
                     <select aria-label="Default select example" onChange={handleSorted}>
                         <option>Sort by price:</option>
                         <option value="high">high to low</option>
                         <option value="low">low to high</option>
                     </select>
+
                     <div className="cardsWrapper row row-cols-1 row-cols-md-4 g-4">
                         {cardsArr.map((item) => {
                             return (
@@ -108,7 +110,7 @@ const Electronics = () => {
 
                                     <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
 
-                                    <Modal show={show} onHide={handleClose}>
+                                    <Modal className="modalCard" show={show} onHide={handleClose}>
 
                                         <Modal.Header>
                                             <img className="productPic" src={product.image} alt="Product pic" />

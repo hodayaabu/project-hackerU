@@ -3,8 +3,6 @@ select {
     font-size: large;
     border: 2px solid rgb(129, 93, 2);
     border-radius: 10%;
-    padding: 0.5%;
-    float: right;
 }
 
 div.cardsWrapper {
@@ -44,3 +42,29 @@ img.productPic {
 div.container {
     min-height: 100vh;
 }
+
+
+
+@media screen and (max-width: 767px) {
+    .card {
+        width: 75%;
+    }
+
+    ;
+
+    div.modalCard {
+        padding: 40%
+    }
+
+    ;
+
+    select {
+        font-size: small;
+    }
+
+    option {
+        font-size: small;
+    }
+}
+
+;

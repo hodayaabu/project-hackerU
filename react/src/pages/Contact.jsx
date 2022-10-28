@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
 
+//import css:
+import '../css/contact.css';
+
 const Contact = () => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -66,7 +69,7 @@ const Contact = () => {
         <>
             <h1>We here for you!</h1>
             <div className='contact'>
-                <section>
+                <div className='contactForm'>
                     <p>
                         <strong> We will be happy to hear from you about any comments, requests or questions.
                             All you need to do is fill out the form below.</strong>
@@ -104,8 +107,8 @@ const Contact = () => {
                         </button>
                     </Form>
 
-                </section>
-                <section>
+                </div>
+                <div className='contactInfo'>
                     <p><strong>You can also contact us in one of this options:</strong></p>
                     <div>
                         <label htmlFor="email">Email:</label>
@@ -120,7 +123,7 @@ const Contact = () => {
                             0587611770
                         </Link>
                     </div>
-                </section>
+                </div>
             </div>
         </>
     )

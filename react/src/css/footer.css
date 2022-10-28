@@ -6,7 +6,7 @@ div.footer {
 
 div.links {
     border-top: 10px solid rgb(129, 93, 2);
-    margin-top: 10%;
+    margin-top: 15%;
     padding: 2%;
     background-color: rgb(1, 1, 56);
     text-align: center;
@@ -44,3 +44,22 @@ div.mainFooter {
 .blockquote-footer {
     color: rgb(129, 93, 2);
 }
+
+
+@media screen and (max-width: 767px) {
+    p.brakeLine {
+        display: none;
+    }
+
+    .link {
+        font-size: small;
+        padding: 0 3%;
+    }
+
+    .blockquote-footer {
+        font-size: small;
+        margin: 1%;
+    }
+}
+
+;

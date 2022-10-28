@@ -57,7 +57,7 @@ const Users = () => {
     }
 
     const handleAdmin = (admin) => {
-        return admin ? 'Yes' : 'No';
+        return admin ? 'Admin' : 'User';
     }
 
     return (
@@ -78,35 +78,40 @@ const Users = () => {
                             onChange={handleSearch}
                         />
                     </form>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>City</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Admin?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {usersArr
-                                .filter((item) => {
-                                    return search.toLocaleLowerCase() === '' ? item : item.name.toLocaleLowerCase().includes(search);
-                                })
-                                .map((item) => (
-                                    <tr key={item._id}>
-                                        <td>{item.name}</td>
-                                        <td>{item.city}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.phone}</td>
-                                        <td>{handleAdmin(item.admin)}</td>
+                    <div >
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Admin?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {usersArr
+                                    .filter((item) => {
+                                        return search.toLocaleLowerCase() === '' ? item : item.name.toLocaleLowerCase().includes(search);
+                                    })
+                                    .map((item) => (
 
-                                        <td><DeleteItem onDelete={handleDeleteUser} id={item._id} /></td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
+                                        <div className="t">
+                                            <tr key={item._id}>
+                                                <td aria-label='Name'>{item.name}</td>
+                                                <td aria-label='City'>{item.city}</td>
+                                                <td aria-label='Email'>{item.email}</td>
+                                                <td aria-label='Phone'>{item.phone}</td>
+                                                <td aria-label='Admin?'>{handleAdmin(item.admin)}</td>
+
+                                                <td><DeleteItem onDelete={handleDeleteUser} id={item._id} /></td>
+                                            </tr>
+                                        </div>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             )}
         </>

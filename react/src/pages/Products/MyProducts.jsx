@@ -62,7 +62,7 @@ const MyProducts = () => {
             {cardsArr.length > 0 ? (
                 <div className="container">
                     <h5>My Products</h5>
-                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                    <div className="row row-cols-1 row-cols-md-3 g-4 cardsWrapper">
                         {cardsArr.map((item) => {
                             return (
                                 <MyCard
