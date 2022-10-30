@@ -282,20 +282,26 @@ router.patch('/removeFavorite', auth, async (req, res) => {
 
     let idCardsArr = user.favoriteCards;
 
-    idCardsArr.map((id) => {
-      if (id !== cardId) {
-        res.status(400).send("This card is'nt in your favorites");
-        return;
-      }
-    })
+    // idCardsArr.map((id) => {
+    //   if (id !== cardId) {
+    //     res.status(400).send("This card is'nt in your favorites");
+    //     return;
+    //   }
+    // })
 
     idCardsArr = idCardsArr.filter((id) => {
       return id !== cardId;
     })
 
-    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: idCardsArr })
+    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: idCardsArr });
 
-    res.send('The product removed from favorites')
+    user = await User.findById({ _id: req.user._id });
+
+    const favoriteCards = await Card.find({
+      '_id': { $in: user.favoriteCards }
+    });
+
+    res.send(favoriteCards)
   } catch (err) {
     console.log("Something went wrong.", err);
     res.status(401).json({ message: "Something went wrong.", err });
@@ -308,27 +314,16 @@ router.patch('/removeFavorite', auth, async (req, res) => {
 router.get('/favoriteCards', auth, async (req, res) => {
   try {
     let user = await User.findById({ _id: req.user._id });
-    const idCardsArr = user.favoriteCards;
+    if (!user) {
+      res.status(400).send("Sorry, this user is not exist :(");
+      return;
+    }
 
-
-    const cardsArr = [];
-    idCardsArr.forEach(async (id) => {
-      let card = await Card.findById({ _id: id });
-      // console.log(card);
-      cardsArr.push(card);
-
-      // console.log(cardsArr);
+    const favoriteCards = await Card.find({
+      '_id': { $in: user.favoriteCards }
     });
-    console.log(cardsArr);
-    res.json({ cardsArr: cardsArr, msg: 'hey' });
 
-
-    // idCardsArr.map(async (id) => {
-    //   let card = await Card.findById({ _id: id });
-    // cardsArr = [...cardsArr, card];
-    // });
-
-    // res.send(cardsArr);
+    res.send(favoriteCards)
 
   } catch (err) {
     console.log("Something went wrong.", err);

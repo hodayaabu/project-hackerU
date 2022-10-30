@@ -43,17 +43,25 @@ div.container {
     min-height: 100vh;
 }
 
+button.handleAddToFavorite,
+.handleRemoveFavorite {
+    background-color: rgb(1, 1, 56);
+    color: white;
+}
+
+button.handleAddToFavorite:hover,
+.handleRemoveFavorite:hover {
+    color: rgb(1, 1, 56);
+    background-color: white;
+    border: 2px solid rgb(1, 1, 56);
+}
+
+
 
 
 @media screen and (max-width: 767px) {
     .card {
         width: 75%;
-    }
-
-    ;
-
-    div.modalCard {
-        padding: 40%
     }
 
     ;

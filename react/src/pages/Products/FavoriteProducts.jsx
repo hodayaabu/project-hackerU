@@ -42,7 +42,8 @@ const FavoriteProducts = () => {
 
         axios.patch('users/removeFavorite', { 'cardId': productId })
             .then((res) => {
-                toast(res.data);
+                setCardsArr(res.data)
+                toast('The card has been removed from your favorites');
             })
             .catch((err) => {
                 console.log("err.request", err.request);
@@ -62,6 +63,7 @@ const FavoriteProducts = () => {
     useEffect(() => {
         axios.get('/users/favoriteCards')
             .then((response) => {
+                console.log(response.data);
                 setCardsArr(response.data)
             })
             .catch((err) => {
@@ -85,7 +87,7 @@ const FavoriteProducts = () => {
                 <h4>You did not save any product yet</h4>
             ) : (
 
-                <div className="row row-cols-1 row-cols-md-3 g-4 mx-auto">
+                <div className="cardsWrapper row row-cols-1 row-cols-md-3 g-4 mx-auto">
                     {cardsArr.map((item) => {
                         return (
                             <div className="card" key={item._id}>
@@ -93,15 +95,15 @@ const FavoriteProducts = () => {
                                 <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
                                 <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
 
-                                <button className="btn btn-outline-dark" onClick={handleShow} id={item._id}>Show more</button>
+                                <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
 
-                                <Modal show={show} onHide={handleClose}>
+                                <Modal className="modalCard" show={show} onHide={handleClose} >
 
                                     <Modal.Header>
                                         <img className="productPic" src={product.image} alt="Product pic" />
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <h5>About the product:</h5>
+                                        <h5 className="cardTitle">About the product:</h5>
                                         <p className="card-text">{product.description}</p>
                                         <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
                                         <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
@@ -109,7 +111,8 @@ const FavoriteProducts = () => {
                                         <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <span onClick={() => handleRemoveFavorite(product._id)}><BsHeart /> Remove from favorites</span>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
+                                        <button type="button" className="btn handleRemoveFavorite" onClick={() => handleRemoveFavorite(product._id)}><BsHeart /> Remove favorites</button>
                                     </Modal.Footer>
                                 </Modal>
 

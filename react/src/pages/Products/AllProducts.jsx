@@ -111,7 +111,7 @@ const AllProducts = () => {
 
                                     <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
 
-                                    <Modal show={show} onHide={handleClose}>
+                                    <Modal className="modalCard" show={show} onHide={handleClose} >
 
                                         <Modal.Header>
                                             <img className="productPic" src={product.image} alt="Product pic" />
@@ -125,7 +125,8 @@ const AllProducts = () => {
                                             <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
                                         </Modal.Body>
                                         <Modal.Footer>
-                                            <span onClick={() => handleAddFavorite(product._id)}><BsHeartFill /> Add to favorites</span>
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
+                                            <button type="button" className="btn handleAddToFavorite" onClick={() => handleAddFavorite(product._id)}><BsHeartFill /> Add to favorites</button>
                                         </Modal.Footer>
                                     </Modal>
 

@@ -122,7 +122,8 @@ const Furniture = () => {
                                             <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
                                         </Modal.Body>
                                         <Modal.Footer>
-                                            <span onClick={() => handleAddFavorite(product._id)}><BsHeartFill /> Add to favorites</span>
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
+                                            <button type="button" className="btn handleAddToFavorite" onClick={() => handleAddFavorite(product._id)}><BsHeartFill /> Add to favorites</button>
                                         </Modal.Footer>
                                     </Modal>
 

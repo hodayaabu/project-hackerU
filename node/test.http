@@ -58,7 +58,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVk
 
 ### Add new favorite card:
 PATCH {{local}}/users/addFavorite
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzUxMDRlNTk0NDI2YThlOGEzZGU3YjAiLCJlbWFpbCI6InJvbml0YWJ1NjY2QGdtYWlsLmNvbSIsImFkbWluIjoiTm8iLCJpYXQiOjE2NjYyNTQwNzd9.ZPM03Ko1NwaWLO56tT3fDMTxRmAKOWXGK4LoonFqdAI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
 Content-Type: application/json
 
 {
@@ -67,11 +67,11 @@ Content-Type: application/json
 
 ### Remove favorite card:
 PATCH {{local}}/users/removeFavorite
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzJhYzY4OGEwNWZiMGU4NjAxMTBkYmYiLCJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjY0ODIyMjU2fQ.0pSd9FiQ2d-Aw9IdnqOmcqMmDx7d9Y-A0BRXj5tlfRc
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
 Content-Type: application/json
 
 {
-    "cardId": "6314693a7c62e0ae1f664fed"
+    "cardId": "63146b1c7c62e0ae1f664ffd"
 }
 
 
