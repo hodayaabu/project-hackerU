@@ -42,6 +42,7 @@ const FavoriteProducts = () => {
 
         axios.patch('users/removeFavorite', { 'cardId': productId })
             .then((res) => {
+                handleClose();
                 setCardsArr(res.data)
                 toast('The card has been removed from your favorites');
             })
@@ -87,7 +88,7 @@ const FavoriteProducts = () => {
                 <h4>You did not save any product yet</h4>
             ) : (
 
-                <div className="cardsWrapper row row-cols-1 row-cols-md-3 g-4 mx-auto">
+                <div className="cardsWrapper row row-cols-1 row-cols-md-4 g-4">
                     {cardsArr.map((item) => {
                         return (
                             <div className="card" key={item._id}>
