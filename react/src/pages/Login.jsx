@@ -64,11 +64,10 @@ const Login = () => {
                     toast('you logged in as an admin')
                 }
                 toast('you logged in successfully');
-                history.push('/myCards');
+                history.push('/');
 
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

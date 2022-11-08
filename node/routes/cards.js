@@ -170,14 +170,14 @@ router.get('/myAllCards', auth, async (req, res) => {
 //Get all cards by type:
 router.get('/:type', async (req, res) => {
     try {
-        const sportCards = await Card.find({ productType: req.params.type });
+        const cardsByType = await Card.find({ productType: req.params.type });
 
-        if (sportCards.length < 1) {
+        if (cardsByType.length < 1) {
             res.status(404).send(`Sorry, we did not find any cards under ${req.params.type} category`);
             return;
         }
 
-        res.send(sportCards);
+        res.send(cardsByType);
     } catch (err) {
         console.log('err from get my all cards by type:', err);
         res.status(401).json({ err });

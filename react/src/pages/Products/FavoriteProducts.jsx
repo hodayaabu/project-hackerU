@@ -47,7 +47,6 @@ const FavoriteProducts = () => {
                 toast('The card has been removed from your favorites');
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -64,11 +63,9 @@ const FavoriteProducts = () => {
     useEffect(() => {
         axios.get('/users/favoriteCards')
             .then((response) => {
-                console.log(response.data);
                 setCardsArr(response.data)
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

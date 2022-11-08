@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
                 <p>
                     According to the law, every person has the right to review by himself, or by his authorized representative in writing or by his guardian, the information about him held in the database of the operator. In order to receive this information you can and will be required to present identification documents, including proof of ownership of a telephone or e-mail account. If you found the information in the operator's database to be incorrect, complete, clear or up-to-date, you may contact the operator with a request to correct the information or delete it.
                 </p>
-                <p>
+                <div>
                     <h5>Data Security</h5>
 
                     The operator secures the information found on the website and its computer network as far as it concerns the operation of the website, with the most advanced systems and according to the law. Despite the efforts and resources invested in this, the operator cannot commit to the users that illegal penetration of the databases included in the website and the computer network will not be allowed.
@@ -38,7 +38,7 @@ const PrivacyPolicy = () => {
                     <h5>Changes to the privacy policy</h5>
 
                     The operator may change the provisions of the privacy policy from time to time. If the company changes the privacy policy, an update about this will be sent to the email address you provided, as far as you provided.
-                </p>
+                </div>
             </div>
         </>
     )

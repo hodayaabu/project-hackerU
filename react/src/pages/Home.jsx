@@ -26,7 +26,6 @@ const Home = () => {
                 setShow(true);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -46,7 +45,6 @@ const Home = () => {
                 toast(res.data);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -68,7 +66,6 @@ const Home = () => {
                 setCardsArr(arr);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

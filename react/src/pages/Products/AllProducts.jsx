@@ -35,7 +35,6 @@ const AllProducts = () => {
                 setShow(true);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -52,11 +51,9 @@ const AllProducts = () => {
     const handleFavorite = (productId) => {
         axios.patch('users/addFavorite', { 'cardId': productId })
             .then((res) => {
-
                 toast(res.data);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -76,7 +73,6 @@ const AllProducts = () => {
                 setCardsArr(response.data)
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

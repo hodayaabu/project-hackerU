@@ -17,8 +17,6 @@ const Users = () => {
                 setUsersArr(response.data);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
-
                 if (err.response) {
                     //error from server
                     toast.error(err.response.data)
@@ -38,8 +36,6 @@ const Users = () => {
                 toast('The user has been deleted successfully')
             })
             .catch((err) => {
-                console.log("err.request", err.request);
-
                 if (err.response) {
                     //error from server
                     toast.error(err.response.data)

@@ -46,7 +46,6 @@ const AddProduct = () => {
                 toast('Your card has been successfully written');
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -103,7 +102,7 @@ const AddProduct = () => {
                             <option value="Furniture">Furniture</option>
                             <option value="Sport">Sport</option>
                             <option value="Fashion">Fashion</option>
-                            <option value="other">other</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <button className="btn addProductBtn" type="submit" disabled={!description || !price || !type || !image ? true : false}>

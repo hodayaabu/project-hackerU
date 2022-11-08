@@ -80,12 +80,6 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("userName:", userName);
-        console.log("city:", city);
-        console.log("email:", email);
-        console.log("phone:", phone);
-        console.log("password:", password);
-
         axios.post(
             '/users/signup',
             {
@@ -101,7 +95,6 @@ const Signup = () => {
                 toast('You have successfully registered');
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

@@ -52,7 +52,6 @@ const Contact = () => {
                 setDescription('');
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

@@ -17,7 +17,6 @@ const Logout = () => {
                 setUserName(response.data.name);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server

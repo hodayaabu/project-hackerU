@@ -39,7 +39,6 @@ const ForgotPwd
                     toast('An email was sent to you with a link to reset your password')
                 })
                 .catch((err) => {
-                    console.log("err.request", err.request);
 
                     if (err.response) {
                         //error from server

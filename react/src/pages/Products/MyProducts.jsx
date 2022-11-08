@@ -20,7 +20,6 @@ const MyProducts = () => {
                 toast('The card has been deleted successfully')
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -43,7 +42,6 @@ const MyProducts = () => {
                 toast('The card has been updated successfully')
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
