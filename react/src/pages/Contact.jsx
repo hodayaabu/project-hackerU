@@ -1,13 +1,11 @@
-import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
 
-//import css:
+//Import css:
 import '../css/contact.css';
 
 const Contact = () => {
@@ -16,6 +14,8 @@ const Contact = () => {
     const [validEmail, setValidEmail] = useState(false);
     const [description, setDescription] = useState('');
 
+
+    //Check if the user email is valid
     useEffect(() => {
         const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
         const result = EMAIL_REGEX.test(email);
@@ -67,53 +67,80 @@ const Contact = () => {
     return (
         <>
             <h1>We here for you!</h1>
+
             <div className='contact'>
                 <div className='contactForm'>
                     <p>
                         <strong> We will be happy to hear from you about any comments, requests or questions.
                             All you need to do is fill out the form below.</strong>
                     </p>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Your name</Form.Label>
-                            <Form.Control type="text" onChange={handleUserNameChange} value={userName} required controlId="formBasicText" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicText">
-                            <Form.Label>
-                                Email address for reply
+
+                    <form onSubmit={handleSubmit}>
+
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputName1" className="form-label">
+                                Your Name:
+                            </label>
+
+                            <input
+                                id="exampleInputName1"
+                                type="text"
+                                onChange={handleUserNameChange}
+                                value={userName}
+                                required />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Email Address:
+
                                 <span className={validEmail ? "valid" : "hide"}>
                                     <FontAwesomeIcon icon={faCheck} />
                                 </span>
                                 <span className={validEmail || !email ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes} />
                                 </span>
-                            </Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} value={email} required email aria-describedby="emailnote" />
-                            <p id="emailnote" className={email && !validEmail ? "instructions" : "offscreen"}>
+                            </label>
+
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                value={email}
+                                onChange={handleEmailChange}
+                            />
+                            <div id="emailHelp" className={email && !validEmail ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle} />
                                 Please enter a valid email.
-                            </p>
-                        </Form.Group>
-                        <Form.Label>Leave your message here</Form.Label>
-                        <FloatingLabel controlId="floatingTextarea2" onChange={handleDescriptionChange} value={description} required>
-                            <Form.Control
-                                as="textarea"
-                                style={{ height: '100px' }}
-                            />
-                        </FloatingLabel>
-                        <button className='contactFormBtn' type="submit" disabled={!validEmail || !description ? true : false}>
-                            Submit
-                        </button>
-                    </Form>
+                            </div>
+                        </div>
 
+                        <div className="mb-3">
+                            <label htmlFor="descriptionInput">Write your message here:</label>
+
+                            <textarea
+                                className="form-control"
+                                id="descriptionInput"
+                                value={description}
+                                onChange={handleDescriptionChange}
+
+                            />
+                        </div>
+
+                        <button className='contactFormBtn' type="submit" disabled={!validEmail || !description ? true : false}>
+                            Send
+                        </button>
+                    </form>
                 </div>
+
                 <div className='contactInfo'>
                     <p><strong>You can also contact us in one of this options:</strong></p>
                     <div>
                         <label htmlFor="email">Email:</label>
                         <br />
-                        <Link to='#' className='emailLink' onClick={() => window.location = 'mailto:sellbuy442u@gmail.com'}>
-                            sellbuy442u@gmail.com
+                        <Link to='#' className='emailLink' onClick={() => window.location = 'mailto:sellbuy442@gmail.com'}>
+                            sellbuy442@gmail.com
                         </Link>
                         <br />
                         <label htmlFor="phone">Phone: </label>

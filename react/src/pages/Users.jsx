@@ -3,15 +3,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import DeleteItem from "../components/DeleteItem";
 
-//import style:
+//Import style:
 import '../css/users.css';
 
 const Users = () => {
     const [usersArr, setUsersArr] = useState([]);
     const [search, setSearch] = useState('');
 
+    //Find all the users
     useEffect(() => {
-
         axios.get('/users/allUsers', { headers: { 'admin-token': localStorage.getItem("token") } })
             .then((response) => {
                 setUsersArr(response.data);
@@ -29,9 +29,12 @@ const Users = () => {
             });
     }, []);
 
+    //When admin clicked on delete user
     const handleDeleteUser = (id) => {
         axios.delete('/users/deleteUser', { headers: { 'user-id': id } })
             .then((response) => {
+
+                //Update rhe new users array
                 setUsersArr(response.data);
                 toast('The user has been deleted successfully')
             })
@@ -63,8 +66,10 @@ const Users = () => {
                     <h4>There is no users yet</h4>
                 </div>
             ) : (
+
                 <div className="container">
                     <h1>All the users</h1>
+
                     <form className="d-flex" role="search">
                         <input
                             className="form-control me-2"
@@ -74,35 +79,35 @@ const Users = () => {
                             onChange={handleSearch}
                         />
                     </form>
+
                     <div >
                         <table className="table">
+
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>City</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Admin?</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Admin?</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {usersArr
                                     .filter((item) => {
                                         return search.toLocaleLowerCase() === '' ? item : item.name.toLocaleLowerCase().includes(search);
                                     })
                                     .map((item) => (
+                                        <tr key={item._id}>
+                                            <td >{item.name}</td>
+                                            <td >{item.city}</td>
+                                            <td >{item.email}</td>
+                                            <td >{item.phone}</td>
+                                            <td >{handleAdmin(item.admin)}</td>
 
-                                        <div className="t">
-                                            <tr key={item._id}>
-                                                <td aria-label='Name'>{item.name}</td>
-                                                <td aria-label='City'>{item.city}</td>
-                                                <td aria-label='Email'>{item.email}</td>
-                                                <td aria-label='Phone'>{item.phone}</td>
-                                                <td aria-label='Admin?'>{handleAdmin(item.admin)}</td>
-
-                                                <td><DeleteItem onDelete={handleDeleteUser} id={item._id} /></td>
-                                            </tr>
-                                        </div>
+                                            <th scope="row"><DeleteItem onDelete={handleDeleteUser} id={item._id} /></th>
+                                        </tr>
                                     ))
                                 }
                             </tbody>

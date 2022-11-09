@@ -2,14 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-//import css
+//Import css
 import '../css/navbar.css';
-
 
 const MainNavigator = () => {
     const loggedIn = useSelector((state) => state.auth.loggedIn);
     const isAdmin = useSelector((state) => state.admin.isAdmin);
-
 
     return (
         <>
@@ -17,6 +15,7 @@ const MainNavigator = () => {
                 <NavLink className="navbar-brand navbar-logo" to="/" exact >BUY & SELL</NavLink>
                 <p className="logo-text">Buying and selling second hand products</p>
             </div>
+
             <nav className="navbar navbar-expand-lg bg-light">
                 <button className="navbar-toggler responsiveNavbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     v

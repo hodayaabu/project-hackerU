@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 
-//import style: 
+//Import style: 
 import '../css/profile.css';
 
 const Profile = () => {
@@ -15,14 +15,13 @@ const Profile = () => {
     const [updatedCity, setUpdateCity] = useState('');
     const [updatedPhone, setUpdatePhone] = useState('');
 
+    //Find the user
     useEffect(() => {
         axios.get('/users/me')
             .then((response) => {
                 setUser(response.data);
             })
     }, []);
-
-
 
     let viewMode = {};
     let editMode = {};
@@ -81,8 +80,10 @@ const Profile = () => {
                         value={updatedName}
                         onChange={(e) => setUpdateName(e.target.value)}
                     />
+
                     <br />
                     <br />
+
                     <label>City:</label>
                     <br />
                     <input
@@ -91,8 +92,10 @@ const Profile = () => {
                         value={updatedCity}
                         onChange={(e) => setUpdateCity(e.target.value)}
                     />
+
                     <br />
                     <br />
+
                     <label>Phone:</label>
                     <br />
                     <input
@@ -101,8 +104,10 @@ const Profile = () => {
                         value={updatedPhone}
                         onChange={(e) => setUpdatePhone(e.target.value)}
                     />
+
                     <br />
                     <br />
+
                     <button className="btn updateProfileBtn" onClick={handleBtnUpdate} style={editMode}>Update</button>
                 </div>
             </div>

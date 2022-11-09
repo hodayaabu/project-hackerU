@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-//import style:
+//Import style:
 import "../css/deleteItemComponent.css";
 
 const DeleteItem = ({ onDelete, id }) => {

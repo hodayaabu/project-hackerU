@@ -8,11 +8,13 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 
+// import style
+import './css/app.css';
+
 // add toastify
 import "react-toastify/dist/ReactToastify.css";
 
 import App from './App';
-import './css/app.css';
 
 import store from "./store/index.redux";
 

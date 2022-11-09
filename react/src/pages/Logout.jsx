@@ -8,9 +8,12 @@ import { adminActions } from "../store/admin.redux";
 
 const Logout = () => {
     const [userName, setUserName] = useState('');
+
+    //Redux
     const loggedIn = useSelector((state) => state.auth.loggedIn);
     const dispatch = useDispatch();
 
+    //Find the user
     useEffect(() => {
         axios.get('/users/me')
             .then((response) => {
@@ -28,13 +31,16 @@ const Logout = () => {
                     toast.error('Something went wrong')
                 }
             });
-    }, [])
+    }, []);
+
 
     const handleLogout = () => {
         localStorage.clear();
         dispatch(authActions.logout());
         dispatch(adminActions.noAdmin());
     }
+
+
     return (
         <>
             {loggedIn ? (

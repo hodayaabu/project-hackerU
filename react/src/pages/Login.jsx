@@ -8,11 +8,14 @@ import { authActions } from "../store/auth.redux";
 import { adminActions } from "../store/admin.redux";
 import { toast } from "react-toastify";
 
-//import css
+//Import css
 import '../css/login&signup.css';
 
+
+//Regex
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]$/;
+
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -24,7 +27,8 @@ const Login = () => {
     const focusRef = useRef();
     const history = useHistory();
 
-    //redux
+
+    //Redux
     const dispatch = useDispatch();
 
     const handleEmailChange = (ev) => {
@@ -38,15 +42,20 @@ const Login = () => {
         focusRef.current.focus();
     }, []);
 
+
+    //Check if the user email is valid
     useEffect(() => {
         const result = EMAIL_REGEX.test(email);
         setValidEmail(result);
     }, [email])
 
+
+    //Check if the user password is valid
     useEffect(() => {
         const result = PWD_REGEX.test(password);
         setValidPassword(result);
     }, [password])
+
 
     const handleSubmit = (ev) => {
         ev.preventDefault();
@@ -55,15 +64,18 @@ const Login = () => {
             .post("/users/login", { email: email, password: password })
             .then((response) => {
 
-                //save token from server to local storage
+                //Save token from server to local storage
                 localStorage.setItem("token", response.data.token);
                 dispatch(authActions.login());
 
+                //Check if this user is un admin
                 if (response.data.admin) {
                     dispatch(adminActions.admin());
                     toast('you logged in as an admin')
                 }
                 toast('you logged in successfully');
+
+                //Push to home page
                 history.push('/');
 
             })
@@ -82,12 +94,10 @@ const Login = () => {
 
     }
 
-
-
     return (
         <section>
-
             <h1>Login</h1>
+
             <form className="loginForm" onSubmit={handleSubmit}>
 
                 <div className="mb-3">
@@ -101,6 +111,7 @@ const Login = () => {
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                     </label>
+
                     <input
                         type="email"
                         className="form-control"
@@ -110,11 +121,13 @@ const Login = () => {
                         onChange={handleEmailChange}
                         ref={focusRef}
                     />
+
                     <div id="emailHelp" className={email && !validEmail ? "instructions" : "offscreen"}>
                         <FontAwesomeIcon icon={faInfoCircle} />
                         Please enter a valid email.
                     </div>
                 </div>
+
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword1" className="form-label">
                         Password:
@@ -126,6 +139,7 @@ const Login = () => {
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                     </label>
+
                     <input
                         type="password"
                         className="form-control"
@@ -146,6 +160,7 @@ const Login = () => {
                         <span aria-label="percent">%</span>
                     </div>
                 </div>
+
                 <div>
                     <p>
                         <Link className="forgotPwdLink" to={'/forgotPwd'}>forgot password?</Link>
@@ -154,6 +169,7 @@ const Login = () => {
                         <Link className="signUpLink" to={'/signup'}>Sign up</Link>
                     </p>
                 </div>
+
                 <button type="submit" className="btn loginBtn" disabled={!validEmail || !validPassword ? true : false}>
                     Submit
                 </button>

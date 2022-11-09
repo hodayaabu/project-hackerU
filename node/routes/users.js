@@ -462,11 +462,8 @@ router.post('/newMsg', async (req, res) => {
 
     //Check in the database if user already exists by email:
     let user = await User.findOne({ email });
-    if (user) {
-      let userId = user._id
-    } else {
-      userId = 'Unregistered user';
-    }
+
+    let userId = user ? user._id : 'Unregistered user';
 
 
     const transporter = nodemailer.createTransport({
@@ -508,9 +505,6 @@ router.post('/newMsg', async (req, res) => {
     res.status(401).send(err);
   }
 });
-
-
-
 
 
 module.exports = router;

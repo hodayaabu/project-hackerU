@@ -28,8 +28,11 @@ const MyCard = (props) => {
 
     return (
         <div className="card" key={props.id}>
+
             <div onDoubleClick={handleEditing} style={viewMode}>
+
                 <img className="card-img-top" src={props.image} alt="Product pic" />
+
                 <div className="card-body">
                     <h5 className="card-title">About The Product:</h5>
                     <p className="card-text">{props.desc}</p>
@@ -44,6 +47,8 @@ const MyCard = (props) => {
                 </div>
             </div>
 
+
+            {/* When edit mode is on this div will display: */}
             <div style={editMode}>
                 <label>Description:</label>
                 <input

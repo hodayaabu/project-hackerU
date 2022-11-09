@@ -19,6 +19,7 @@ const ProductTypes = ({ name }) => {
         setProduct({});
     }
 
+    //When user clicked on a product to see more information:
     const handleShow = (e) => {
         axios.get('cards/myCard', { headers: { 'id-card': e.target.id } })
             .then((res) => {
@@ -41,13 +42,13 @@ const ProductTypes = ({ name }) => {
     }
 
 
+    //When user clicked on add to favorite
     const handleFavorite = (productId) => {
         axios.patch('users/addFavorite', { 'cardId': productId })
             .then((res) => {
                 toast(res.data);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -61,13 +62,14 @@ const ProductTypes = ({ name }) => {
             });
     }
 
+    // Request for all the product in this type
     useEffect(() => {
         axios.get(url)
             .then((response) => {
                 setCardsArr(response.data)
             })
             .catch((err) => {
-                console.log("err.request", err.request);
+
 
                 if (err.response) {
                     //error from server
@@ -81,6 +83,8 @@ const ProductTypes = ({ name }) => {
             });
     }, [url]);
 
+
+    //Function to sort products by price
     const handleSorted = (e) => {
         if (e.target.value === 'high') {
             const sortedCards = [...cardsArr].sort((a, b) => b.price - a.price);
@@ -96,7 +100,9 @@ const ProductTypes = ({ name }) => {
             {cardsArr.length > 0 ? (
                 <div>
                     <h5>All {name} Product:</h5>
+
                     <SortProducts handleSorted={handleSorted} />
+
                     <div className="cardsWrapper row row-cols-1 row-cols-md-4 g-4">
                         {cardsArr.map((item) => {
                             return (

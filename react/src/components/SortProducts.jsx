@@ -1,5 +1,4 @@
 
-
 const SortProducts = ({ handleSorted }) => {
     return (
         <select onChange={handleSorted}>

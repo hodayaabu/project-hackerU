@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlusCircle } from "react-icons/fa";
 
+//Import style
 import '../../css/addProduct.css'
 
 const AddProduct = () => {
@@ -61,9 +62,10 @@ const AddProduct = () => {
 
     return (
         <>
-
             <section>
+
                 <h4>Add New Product: </h4>
+
                 <form className="CardForm" onSubmit={handleSubmit}>
 
                     <label htmlFor="imageInput">Write image link here:</label>
@@ -95,6 +97,7 @@ const AddProduct = () => {
                         ref={focusRef}
                     />
                     <br />
+
                     <div className="mb-3">
                         <select className="form-select" aria-label="Default select example" onChange={handleTypeChange}>
                             <option>Product Type: </option>
@@ -105,10 +108,13 @@ const AddProduct = () => {
                             <option value="Other">Other</option>
                         </select>
                     </div>
+
                     <button className="btn addProductBtn" type="submit" disabled={!description || !price || !type || !image ? true : false}>
                         <FaPlusCircle /> Add Product
                     </button>
+
                 </form>
+
             </section>
         </>
     )
