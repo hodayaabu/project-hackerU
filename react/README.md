@@ -1,3 +1,9 @@
+## Admin access:
+email: 'sellbuy442@gmail.com',
+email password: ' '
+user name: 'Admin',
+site password: 'Admin770@'
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

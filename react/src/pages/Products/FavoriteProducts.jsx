@@ -14,7 +14,7 @@ const FavoriteProducts = () => {
 
     // Request for all the favorite product
     useEffect(() => {
-        axios.get('/users/favoriteCards')
+        axios.get('/cards/favoriteCards')
             .then((response) => {
                 setCardsArr(response.data)
             })
@@ -66,7 +66,7 @@ const FavoriteProducts = () => {
     //When user clicked on remove from favorite
     const handleRemoveFavorite = (productId) => {
 
-        axios.patch('users/removeFavorite', { 'cardId': productId })
+        axios.patch('cards/removeFavorite', { 'cardId': productId })
             .then((res) => {
                 handleClose();
                 setCardsArr(res.data)

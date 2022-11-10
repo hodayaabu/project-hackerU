@@ -78,7 +78,7 @@ const AllProducts = () => {
 
     //When user clicked on add to favorite
     const handleFavorite = (productId) => {
-        axios.patch('users/addFavorite', { 'cardId': productId })
+        axios.patch('cards/addFavorite', { 'cardId': productId })
             .then((res) => {
                 toast(res.data);
             })

@@ -1,4 +1,4 @@
-const { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd, validateUserMsg } = require("../validations/user.validation");
+const { validateUser, validateUpdateUser, validateUpdatePwd, validateForgotPwd, validateUserMsg } = require("../validations/user.validation");
 const validateAuth = require('../validations/auth.validation');
 const User = require("../model/users");
 const { Card } = require("../model/cards");
@@ -13,24 +13,31 @@ const express = require('express');
 
 const router = express.Router();
 
+
 //Get all users:
 router.get('/allUsers', auth, async (req, res) => {
+
+  //Checking if the sender of the request is an admin
   if (req.user.admin === false) {
     res.status(401).send("Access denied, you are not an admin");
     return;
   }
+
   try {
     const allUsers = await User.find();
-    if (!allUsers) {
+    if (allUsers.length < 0) {
       res.status(400).send('Sorry, there are no registered users yet');
       return;
     }
+
     res.send(allUsers);
+
   } catch (err) {
     console.log('err from get all users:', err);
     res.status(401).json({ err });
   }
 })
+
 
 //Add new user:
 router.post('/signup', async (req, res) => {
@@ -51,6 +58,8 @@ router.post('/signup', async (req, res) => {
       return;
     }
 
+
+    //Deductive definition of admin - negative, unless it was pre-defined as positive
     let admin = false;
     if (req.body.admin) {
       admin = req.body.admin
@@ -61,6 +70,8 @@ router.post('/signup', async (req, res) => {
       admin
     });
 
+
+    //password encryption
     const salt = await bcrypt.genSalt(12);
     user.password = await bcrypt.hash(user.password, salt);
 
@@ -72,6 +83,7 @@ router.post('/signup', async (req, res) => {
     res.status(401).json({ err });
   }
 });
+
 
 //Send token for user after login:
 router.post('/login', async (req, res) => {
@@ -91,7 +103,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    //Comparing the password given by the user to the password in the database:
+    //Comparing the given password to the password in the database:
     const validatePassword = await bcrypt.compare(
       req.body.password,
       user.password
@@ -101,6 +113,7 @@ router.post('/login', async (req, res) => {
       res.status(400).send("Sorry, invalid password:(");
       return;
     }
+
 
     //Create the token:
     const token = user.generateAuthToken();
@@ -125,12 +138,15 @@ router.get('/me', auth, async (req, res) => {
       res.status(400).send("Sorry, this user is not exist :(");
       return;
     }
+
     res.send(user);
+
   } catch (err) {
     console.log('err from "/me":', err);
     res.status(400).json({ err });
   }
 });
+
 
 //Update user:
 router.patch('/update', async (req, res) => {
@@ -170,19 +186,8 @@ router.patch('/update', async (req, res) => {
 //Delete user:
 router.delete('/deleteUser', auth, async (req, res) => {
 
+  //Checking if the sender of the request is an admin
   if (req.user.admin === false) {
-    res.status(401).send("Access denied, you are not an admin");
-    return;
-  }
-
-  let user = await User.findById({ _id: req.user._id });
-
-  if (!user) {
-    res.status(400).send("Sorry, this user is not exist :(");
-    return;
-  }
-
-  if (!user.admin) {
     res.status(401).send("Access denied, you are not an admin");
     return;
   }
@@ -213,130 +218,10 @@ router.delete('/deleteUser', auth, async (req, res) => {
 });
 
 
-//Add card to favorites
-router.patch('/addFavorite', auth, async (req, res) => {
-
-  try {
-    const { cardId } = req.body;
-    if (!cardId) {
-      res.status(401).send("No card id provide");
-      return;
-    }
-
-    let card = await Card.findById({ _id: cardId });
-    if (!card) {
-      res.status(401).send("Card was not found");
-      return;
-    }
-
-    let user = await User.findById({ _id: req.user._id });
-    if (!user) {
-      res.status(400).send("Sorry, this user is not exist :(");
-      return;
-    }
-
-    let cardsArr = user.favoriteCards;
-
-    cardsArr.map((id) => {
-      if (id === cardId) {
-        res.status(400).send("This product is already in your favorites");
-        return;
-      }
-    })
-
-    cardsArr = [...cardsArr, cardId];
-
-    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: cardsArr });
-
-    res.send('The product saved');
-
-  } catch (err) {
-    console.log("Something went wrong.", err);
-    res.status(401).json({ message: "Something went wrong.", err });
-  }
-
-});
-
-
-//Remove card to favorites
-router.patch('/removeFavorite', auth, async (req, res) => {
-
-  try {
-    const { cardId } = req.body;
-    if (!cardId) {
-      res.status(401).send("No card id provide");
-      return;
-    }
-
-    let card = await Card.findById({ _id: cardId });
-    if (!card) {
-      res.status(401).send("Card was not found");
-      return;
-    }
-
-    let user = await User.findById({ _id: req.user._id });
-    if (!user) {
-      res.status(400).send("Sorry, this user is not exist :(");
-      return;
-    }
-
-    let idCardsArr = user.favoriteCards;
-
-    // idCardsArr.map((id) => {
-    //   if (id !== cardId) {
-    //     res.status(400).send("This card is'nt in your favorites");
-    //     return;
-    //   }
-    // })
-
-    idCardsArr = idCardsArr.filter((id) => {
-      return id !== cardId;
-    })
-
-    await User.findOneAndUpdate({ _id: req.user._id }, { favoriteCards: idCardsArr });
-
-    user = await User.findById({ _id: req.user._id });
-
-    const favoriteCards = await Card.find({
-      '_id': { $in: user.favoriteCards }
-    });
-
-    res.send(favoriteCards)
-  } catch (err) {
-    console.log("Something went wrong.", err);
-    res.status(401).json({ message: "Something went wrong.", err });
-  }
-
-})
-
-
-//Get all user favorite cards:
-router.get('/favoriteCards', auth, async (req, res) => {
-  try {
-    let user = await User.findById({ _id: req.user._id });
-    if (!user) {
-      res.status(400).send("Sorry, this user is not exist :(");
-      return;
-    }
-
-    const favoriteCards = await Card.find({
-      '_id': { $in: user.favoriteCards }
-    });
-
-    res.send(favoriteCards)
-
-  } catch (err) {
-    console.log("Something went wrong.", err);
-    res.status(401).json({ message: "Something went wrong.", err });
-  }
-
-})
-
-
 //forgot pwd:
 router.post('/forgotPassword', async (req, res) => {
   try {
-    const { error } = validateUpdateForgotPwd(req.body);
+    const { error } = validateForgotPwd(req.body);
 
     if (error) {
       res.status(400).send(error.details[0].message);
@@ -353,6 +238,7 @@ router.post('/forgotPassword', async (req, res) => {
     }
 
     const token = user.generateAuthToken();
+
     const link = `http://localhost:3003/users/resetPassword/${user._id}/${token}`;
 
     const transporter = nodemailer.createTransport({
@@ -392,6 +278,7 @@ router.post('/forgotPassword', async (req, res) => {
 });
 
 
+//Password update page
 router.get('/resetPassword/:id/:token', async (req, res) => {
   try {
     const { id, token } = req.params;
@@ -402,8 +289,12 @@ router.get('/resetPassword/:id/:token', async (req, res) => {
       return;
     }
 
+    //Verify the token from the params
     const verify = jwt.verify(token, config.get("jwtKey"));
-    res.render("index", { email: verify.email, status: 'Not Verified' })
+
+    //Sending page to update the password
+    res.render("index", { email: verify.email, status: 'Not Verified' });
+
   } catch (err) {
     console.log(err);
     res.status(401).json({ message: "Something went wrong.", err });
@@ -411,35 +302,40 @@ router.get('/resetPassword/:id/:token', async (req, res) => {
 });
 
 
+//Update password
 router.post('/resetPassword/:id/:token', async (req, res) => {
   try {
     const { id, token } = req.params;
-    const { error } = validateUpdatePwd(req.body);
+    const { password } = req.body;
 
+    const { error } = validateUpdatePwd(req.body);
     if (error) {
       res.status(400).send(error.details[0].message);
       return;
     }
-    const { password } = req.body;
-    console.log(password);
 
     let user = await User.findOne({ _id: id });
-
     if (!user) {
       res.status(400).send('User Not Exists');
       return;
     }
 
+    //Verify the token from the params
     const verify = jwt.verify(token, config.get("jwtKey"));
     if (!verify) {
       res.status(400).send('Invalid Token');
       return;
     }
+
+    //Encrypt the new password
     const hashPassword = await bcrypt.hash(password, 10)
 
+    //Updating the user with the new password
     await User.findByIdAndUpdate({ _id: id }, { password: hashPassword })
 
-    res.render("index", { email: verify.email, status: 'Verified' })
+    //Sending the status to Verified to the update page
+    res.render("index", { email: verify.email, status: 'Verified' });
+
   } catch (err) {
     console.log(err);
     res.status(401).json({ message: "Something went wrong.", err });

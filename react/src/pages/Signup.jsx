@@ -188,7 +188,6 @@ const Signup = () => {
                             onChange={handleEmailChange}
                             value={email}
                             required
-                            email
                             aria-describedby="emailnote"
                         />
                         <p id="emailnote" className={email && !validEmail ? "instructions" : "offscreen"}>

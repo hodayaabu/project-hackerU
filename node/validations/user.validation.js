@@ -35,7 +35,7 @@ function validateUpdatePwd(pwd) {
     return schema.validate(pwd);
 }
 
-function validateUpdateForgotPwd(email) {
+function validateForgotPwd(email) {
     const schema = Joi.object({
         email: Joi.string().min(9).max(225).email().required(),
     });
@@ -52,4 +52,4 @@ function validateUserMsg(userMsg) {
     return schema.validate(userMsg);
 }
 
-module.exports = { validateUser, validateUpdateUser, validateUpdatePwd, validateUpdateForgotPwd, validateUserMsg };
+module.exports = { validateUser, validateUpdateUser, validateUpdatePwd, validateForgotPwd, validateUserMsg };

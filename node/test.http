@@ -4,7 +4,8 @@
 
 //Get all users:
 GET {{local}}/users/allUsers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2M3MmYzMTk4Y2NiNTQwYTNhNzUiLCJlbWFpbCI6IkFkbWluQGdtYWlsLmNvbSIsImFkbWluIjp0cnVlLCJpYXQiOjE2NjY4NTgxMTB9.NFpCzxtwCA-WOj4Hfn1nQQyqajn3eXcxqtMVzvwL1DU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzU2MzczOThjNjc4NzYxMGYwNDY1ZmMiLCJlbWFpbCI6InNlbGxidXk0NDJAZ21haWwuY29tIiwiYWRtaW4iOnRydWUsImlhdCI6MTY2ODA3MTYxNH0.57YpfZY-cTvAfiNJRDsN7G_LDkkkFl5yKKh17ZWlBZc
+
 
 ###Add new user:
 POST  {{local}}/users/signup
@@ -32,47 +33,23 @@ Content-Type: application/json
 
 ### Get user by token:
 GET {{local}}/users/me
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTk3MDk2ZTkzNTA4Mjg0NGYzOGIiLCJlbWFpbCI6ImlzLnRlaGlsYUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNzY1MzA1fQ.YqHbbSisnltxr5y8Xcz64RuOafwJ2NPtemUg0NxjF_8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
 
 
 ### Update user by email:
 PATCH {{local}}/users/update
-user-email: hodaya@gmail.com
+user-email: Mike@gmail.com
 Content-Type: application/json
 
 {
-    "admin": "Yes"
+    "phone": "0534416754"
 }
 
 
 ### Delete user by id:
 DELETE  {{local}}/users/deleteUser
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzU2MzczOThjNjc4NzYxMGYwNDY1ZmMiLCJlbWFpbCI6InNlbGxidXk0NDJAZ21haWwuY29tIiwiaWF0IjoxNjY2ODU0NjEyfQ.zVoCa6um1ToKMyN4Vi78yn2toq2wCuOlN5IOIen_KfU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzU2MzczOThjNjc4NzYxMGYwNDY1ZmMiLCJlbWFpbCI6InNlbGxidXk0NDJAZ21haWwuY29tIiwiYWRtaW4iOnRydWUsImlhdCI6MTY2ODA3MTYxNH0.57YpfZY-cTvAfiNJRDsN7G_LDkkkFl5yKKh17ZWlBZc
 user-id: 632ac688a05fb0e860110dbf
-
-
-### Get all user favorite cards:
-GET {{local}}/users/favoriteCards
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
-
-
-### Add new favorite card:
-PATCH {{local}}/users/addFavorite
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
-Content-Type: application/json
-
-{
-    "cardId": "63146b1c7c62e0ae1f664ffd"
-}
-
-### Remove favorite card:
-PATCH {{local}}/users/removeFavorite
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMzNjhiYmMxN2U4N2VhNzVkYzk5MTAiLCJlbWFpbCI6InlvbmlAZ21haWwuY29tIiwiaWF0IjoxNjY2MjA3ODc4fQ.ncoNs6CHWcl8U6a0kIzJJbFfGdWeyQG5RPRpQntUyjg
-Content-Type: application/json
-
-{
-    "cardId": "63146b1c7c62e0ae1f664ffd"
-}
 
 
 ### Forgot pwd:
@@ -82,6 +59,7 @@ Content-Type: application/json
 {
     "email": "dkhn724@gmail.com"
 }
+
 
 ###Add new user message:
 POST {{local}}/msgs/newMsg
@@ -94,51 +72,77 @@ Content-Type: application/json
 }
 
 
-//Cards//
+
+///////////////Cards///////////////
 
 ### Get all cards:
 GET {{local}}/cards/allCards
 
 
+### Get all cards by type
+GET {{local}}/cards/Other
+
+
 ### Add new card:
 POST {{local}}/cards
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFkZmE4MjNkZDVmZTgxZTcwNmU1ODIiLCJlbWFpbCI6ImhvZGF5YUBnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjYyOTcyNjI4fQ.yf0-P-xUo-M7chpR2KWJkal3HCbuqdXQ_atw3rc2eYI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
 Content-Type: application/json
 
 {
-    "image": "https://img.yad2.co.il/Pic/202208/29/3_2/o/y2_1_04819_20220829151457.jpeg?l=5&c=1&w=1024&h=768",
-    "description": "very good", 
-    "price": "600",
-    "productType": "Watches"
+    "image": "https://img.yad2.co.il/Pic/202211/09/3_0/o/y2_1_02659_20221109162454.jpeg?l=5&c=1&w=1024&h=768",
+    "description": "Ninja grill pot new in packaging has not been used at all", 
+    "price": "300",
+    "productType": "Electronics"
 }
 
 
 ### Find card by id:
 Get {{local}}/cards/myCard
-id-card: 630b335ba895014c972e4e5d
+id-card: 636a106e745dd0eea4ffe472
 
 
 ### Update card by id:
 PATCH  {{local}}/cards/myCard
-id-card: 6314693a7c62e0ae1f664fed
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmJkNWMxYzdiYjYyODYxNjhhZmIzYzciLCJlbWFpbCI6InRhbEBnbWFpbC5jb20iLCJpYXQiOjE2NTY1NzkxMDJ9.HLkM4NL6HgUVhvIK6ivK1LJHlGHASeDoe4BI8FCvYrI
+id-card: 636a1743745dd0eea4ffe4b9
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
 Content-Type: application/json
 
 {
-   "image": "https://img.yad2.co.il/Pic/202202/07/3_0/o/y2_1_07458_20220207045916.jpeg?l=5&c=1&w=1024&h=768",
-    "price":"890"
+    "price":"590"
 }
 
 
 ### Dalate card by id:
 DELETE  {{local}}/cards/myCard
-id-card: 63146beb7c62e0ae1f665012
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
+id-card: 636a1743745dd0eea4ffe4b9
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
 
 
 ### Get all user cards
 GET {{local}}/cards/myAllCards
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhNTgyYWE4MTc0YmYzZDhlZDE3YmYiLCJlbWFpbCI6ImhvZGF5YTFhYnVAZ21haWwuY29tIiwiaWF0IjoxNjU5NTI1NTM2fQ.BBLQbfY4ekwXyvpaPqPd5S9SfcNqSTfTs7_BgjFZ6_c
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
 
-### Get all cards by type
-GET {{local}}/cards/Other
+
+### Get all user favorite cards:
+GET {{local}}/cards/favoriteCards
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
+
+
+### Add new favorite card:
+PATCH {{local}}/cards/addFavorite
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
+Content-Type: application/json
+
+{
+    "cardId": "636a106e745dd0eea4ffe472"
+}
+
+
+### Remove favorite card:
+PATCH {{local}}/cards/removeFavorite
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVhM2QyMTE4Y2Q1MDhiZWY3YjNkNDciLCJlbWFpbCI6Ik1pa2VAZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjgwNzE2NjR9.mgvsBunfI3BXE1YBEBwCr_TwtuaxUZW4Xbvz4qe6pmU
+Content-Type: application/json
+
+{
+    "cardId": "636a106e745dd0eea4ffe472"
+}
