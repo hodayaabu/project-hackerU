@@ -26,12 +26,16 @@ const MyCard = (props) => {
         setEditing(false);
     }
 
+    const style = {
+        'height': '30%'
+    }
+
     return (
-        <div className="card" key={props.id}>
+        <div className="card" style={style} key={props.id}>
 
             <div onDoubleClick={handleEditing} style={viewMode}>
 
-                <img className="card-img-top" src={props.image} alt="Product pic" />
+                <img height='50%' className="card-img-top" src={props.image} alt="Product pic" />
 
                 <div className="card-body">
                     <h5 className="card-title">About The Product:</h5>
@@ -43,6 +47,7 @@ const MyCard = (props) => {
                 </div>
 
                 <div className="card-footer">
+                    <div><small>Double click to edit the product</small></div>
                     <DeleteItem onDelete={props.onDelete} id={props.id} />
                 </div>
             </div>

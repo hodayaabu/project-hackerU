@@ -68,6 +68,7 @@ const Profile = () => {
                         <p className="card-text">{city}</p>
                         <p className="card-text">{email}</p>
                         <p className="card-text">{phone}</p>
+                        <span><small>Double click to edit your profile</small></span>
                     </div>
                 </div>
 
