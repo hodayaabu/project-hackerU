@@ -117,15 +117,16 @@ const Home = () => {
                             <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
 
                             <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
-                            <ModalCard
-                                handleClose={handleClose}
-                                handleFavorite={handleFavorite}
-                                product={product}
-                                show={show}
-                            />
+
                         </div>
                     )
                 })}
+                <ModalCard
+                    handleClose={handleClose}
+                    handleFavorite={handleFavorite}
+                    product={product}
+                    show={show}
+                />
             </div>
 
             <span ><Link to='/products' className="productsLink">click to another products...</Link></span>

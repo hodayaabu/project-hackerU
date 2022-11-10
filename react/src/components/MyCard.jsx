@@ -1,6 +1,8 @@
 import { useState } from "react";
 import DeleteItem from "./DeleteItem";
 
+import '../css/myProduct.css'
+
 const MyCard = (props) => {
     const [editing, setEditing] = useState(false);
     const [updatedDescription, setUpdateDescription] = useState(props.desc);
@@ -54,9 +56,11 @@ const MyCard = (props) => {
 
 
             {/* When edit mode is on this div will display: */}
-            <div style={editMode}>
-                <label>Description:</label>
-                <input
+            <div className="updateProductDiv" style={editMode}>
+                <label htmlFor="descriptionInput">Description:</label>
+                <textarea
+                    className="form-control updateProduct"
+                    id="descriptionInput"
                     type="text"
                     style={editMode}
                     value={updatedDescription}
@@ -65,6 +69,7 @@ const MyCard = (props) => {
 
                 <label>Image:</label>
                 <input
+                    className="updateProduct"
                     type="text"
                     style={editMode}
                     value={updatedImage}
@@ -73,6 +78,7 @@ const MyCard = (props) => {
 
                 <label>Type:</label>
                 <input
+                    className="updateProduct"
                     type="text"
                     style={editMode}
                     value={updatedType}
@@ -81,12 +87,13 @@ const MyCard = (props) => {
 
                 <label>Price:</label>
                 <input
+                    className="updateProduct"
                     type="text"
                     style={editMode}
                     value={updatedPrice}
                     onChange={(e) => setUpdatedPrice(e.target.value)}
                 />
-                <button onClick={handleBtnUpdate} style={editMode}>Update</button>
+                <button className="btn UpdateBtn" onClick={handleBtnUpdate} style={editMode}>Update</button>
             </div>
         </div>
     );

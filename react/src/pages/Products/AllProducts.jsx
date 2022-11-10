@@ -32,7 +32,6 @@ const AllProducts = () => {
             });
     }, []);
 
-
     //Function to sort products by price
     const handleSorted = (e) => {
         if (e.target.value === 'high') {
@@ -75,7 +74,6 @@ const AllProducts = () => {
             });
     }
 
-
     //When user clicked on add to favorite
     const handleFavorite = (productId) => {
         axios.patch('cards/addFavorite', { 'cardId': productId })
@@ -112,18 +110,17 @@ const AllProducts = () => {
                                     <img className="productPic" src={item.image} alt="Product pic" />
                                     <p className="card-text"> <strong>Type:</strong> {item.productType}</p>
                                     <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
-
                                     <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
-
-                                    <ModalCard
-                                        handleClose={handleClose}
-                                        handleFavorite={handleFavorite}
-                                        product={product}
-                                        show={show}
-                                    />
                                 </div>
                             )
                         })}
+
+                        <ModalCard
+                            handleClose={handleClose}
+                            handleFavorite={handleFavorite}
+                            product={product}
+                            show={show}
+                        />
                     </div>
                 </div>
             ) : (

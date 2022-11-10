@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap';
-import { BsHeartFill } from 'react-icons/bs'
+import { BsHeartFill, BsHeart } from 'react-icons/bs'
 
-const ModalCard = ({ handleClose, handleFavorite, product, show }) => {
+const ModalCard = ({ handleClose, handleFavorite, product, show, handleRemoveFavorite }) => {
 
     return (
 
@@ -22,7 +22,17 @@ const ModalCard = ({ handleClose, handleFavorite, product, show }) => {
 
             <Modal.Footer>
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
-                <button type="button" className="btn handleAddToFavorite" onClick={() => handleFavorite(product._id)}><BsHeartFill /> Add to favorites</button>
+                {handleFavorite ? (
+                    <button type="button" className="btn handleAddToFavorite" onClick={() => handleFavorite(product._id)}><BsHeartFill /> Add to favorites</button>
+                ) : (
+
+                    <button
+                        type="button"
+                        className="btn handleRemoveFavorite"
+                        onClick={() => handleRemoveFavorite(product._id)}>
+                        <BsHeart /> Remove favorites
+                    </button>
+                )}
             </Modal.Footer>
 
         </Modal>

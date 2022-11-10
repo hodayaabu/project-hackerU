@@ -124,7 +124,6 @@ const Contact = () => {
                                 id="descriptionInput"
                                 value={description}
                                 onChange={handleDescriptionChange}
-
                             />
                         </div>
 

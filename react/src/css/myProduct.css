@@ -1,0 +1,23 @@
+div.updateProductDiv {
+    padding: 5%;
+}
+
+.updateProduct {
+    padding: 3;
+    margin: auto;
+    color: rgb(1, 1, 56);
+}
+
+.UpdateBtn {
+    padding: 0.5rem;
+    background-color: rgb(1, 1, 65);
+    color: white;
+    width: 100%;
+}
+
+.UpdateBtn:hover {
+    padding: 0.5rem;
+    background-color: rgb(1, 1, 65);
+    color: white;
+    width: 100%;
+}

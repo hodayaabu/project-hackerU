@@ -1,8 +1,7 @@
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { useEffect, useState } from "react"
-import { Modal } from 'react-bootstrap';
-import { BsHeart } from 'react-icons/bs'
+import ModalCard from "../../components/ModalCard";
 
 //Import css
 import '../../css/card.css';
@@ -103,43 +102,19 @@ const FavoriteProducts = () => {
 
                                 <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
 
-                                <Modal className="modalCard" show={show} onHide={handleClose} >
-
-                                    <Modal.Header>
-                                        <img className="productPic" src={product.image} alt="Product pic" />
-                                    </Modal.Header>
-
-                                    <Modal.Body>
-                                        <h5 className="cardTitle">About the product:</h5>
-                                        <p className="card-text">{product.description}</p>
-                                        <p className="card-text"> <strong>Type:</strong> {product.productType}</p>
-                                        <p className="card-text"> <strong>Price:</strong> {product.price}$</p>
-                                        <p className="card-text"> <strong>Created At:</strong> {product.creationDate}</p>
-                                        <p className="card-text"> <strong>Contact: </strong> {product.name} - {product.phone}</p>
-                                    </Modal.Body>
-
-                                    <Modal.Footer>
-                                        <button
-                                            type="button"
-                                            className="btn btn-secondary"
-                                            data-bs-dismiss="modal"
-                                            onClick={handleClose}>Close</button>
-
-                                        <button
-                                            type="button"
-                                            className="btn handleRemoveFavorite"
-                                            onClick={() => handleRemoveFavorite(product._id)}>
-                                            <BsHeart /> Remove favorites
-                                        </button>
-
-                                    </Modal.Footer>
-
-                                </Modal>
-
                             </div>
 
                         )
                     })}
+
+                    <ModalCard
+                        handleClose={handleClose}
+                        handleRemoveFavorite={handleRemoveFavorite}
+                        handleFavorite={false}
+                        product={product}
+                        show={show}
+                    />
+
                 </div>
             )}
         </div>

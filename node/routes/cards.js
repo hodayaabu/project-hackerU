@@ -172,7 +172,6 @@ router.get('/myAllCards', auth, async (req, res) => {
     }
 });
 
-
 //Get all user favorite cards:
 router.get('/favoriteCards', auth, async (req, res) => {
     try {
