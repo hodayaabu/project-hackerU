@@ -228,7 +228,7 @@ router.patch('/addFavorite', auth, async (req, res) => {
         // Checking if the card is already in the favorite's array
         cardsArr.map((id) => {
             if (id === cardId) {
-                res.status(400).send("This product is already in your favorites");
+                res.send("This product is already in your favorites");
                 return;
             }
         })

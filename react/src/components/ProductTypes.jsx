@@ -27,7 +27,6 @@ const ProductTypes = ({ name }) => {
                 setShow(true);
             })
             .catch((err) => {
-                console.log("err.request", err.request);
 
                 if (err.response) {
                     //error from server
@@ -44,7 +43,7 @@ const ProductTypes = ({ name }) => {
 
     //When user clicked on add to favorite
     const handleFavorite = (productId) => {
-        axios.patch('users/addFavorite', { 'cardId': productId })
+        axios.patch('cards/addFavorite', { 'cardId': productId })
             .then((res) => {
                 toast(res.data);
             })
@@ -112,12 +111,11 @@ const ProductTypes = ({ name }) => {
                                     <p className="card-text"> <strong>Price:</strong> {item.price}$</p>
 
                                     <button className="btn btnShowMore" onClick={handleShow} id={item._id}>Show more</button>
-
-                                    <ModalCard handleClose={handleClose} handleFavorite={handleFavorite} product={product} show={show} />
-
                                 </div>
                             )
                         })}
+                        <ModalCard handleClose={handleClose} handleFavorite={handleFavorite} product={product} show={show} />
+
                     </div>
                 </div>
             ) : (
