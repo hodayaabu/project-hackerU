@@ -57,7 +57,7 @@ POST {{local}}/users/forgotPassword
 Content-Type: application/json
 
 {
-    "email": "dkhn724@gmail.com"
+    "email": "hodaya1abu@gmail.com"
 }
 
 
