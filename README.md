@@ -14,11 +14,16 @@ Of course, you can browse the site without registering and logging in.
 Happy reading and browsing :)
 
 
-## Admin access:
-email: 'sellbuy442@gmail.com',
-email password: ' '
-user name: 'Admin',
-site password: 'Admin770@'
+## Admin & Users:
+To register as a regular user, you can register on the SIGN UP page
+
+To register as an admin, you need to register in Postman or in Rest Client and add a field of:
+"admin": "true"
+Because the default of the users is "admin": "false"
+
+Or go into Compass and change the admin field of the requested user from "false" to "true"
+
+
 
 ## Available Scripts
 In react, you can run:
