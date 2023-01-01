@@ -9,7 +9,7 @@ import { adminActions } from "../store/admin.redux";
 import { toast } from "react-toastify";
 
 //Import css
-import '../css/login&signup.css';
+import '../css/login_signup.css';
 
 
 //Regex
