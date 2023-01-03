@@ -9,7 +9,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 
 // import style
-import './css/app.css';
+import './css/App.css';
 
 // add toastify
 import "react-toastify/dist/ReactToastify.css";
