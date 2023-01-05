@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 const AuthGuardRoute = ({ component: Component }, ...rest) => {
 
     const loggedIn = useSelector((state) => state.auth.loggedIn);
+    const isLoggedIn = localStorage.getItem('loggedIn');
 
     return (
         <Route
             {...rest}
             render={(props) => {
-                return loggedIn === true ? (
+                return loggedIn || isLoggedIn === true ? (
                     <Component {...props} />
                 ) : (
                     <Redirect to="/login" />

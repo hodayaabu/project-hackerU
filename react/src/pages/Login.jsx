@@ -27,7 +27,6 @@ const Login = () => {
     const focusRef = useRef();
     const history = useHistory();
 
-
     //Redux
     const dispatch = useDispatch();
 
@@ -66,6 +65,7 @@ const Login = () => {
 
                 //Save token from server to local storage
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("loggedIn", true);
                 dispatch(authActions.login());
 
                 //Check if this user is un admin

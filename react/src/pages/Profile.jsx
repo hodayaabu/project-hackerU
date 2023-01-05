@@ -15,6 +15,7 @@ const Profile = () => {
     const [updatedCity, setUpdateCity] = useState('');
     const [updatedPhone, setUpdatePhone] = useState('');
 
+
     //Find the user
     useEffect(() => {
         axios.get('/users/me')

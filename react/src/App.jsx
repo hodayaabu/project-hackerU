@@ -31,7 +31,9 @@ import Users from "./pages/Users";
 import Profile from "./pages/Profile";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
+
 const App = () => {
+
   return (
     <Router>
       <MainNavigator />
@@ -39,11 +41,11 @@ const App = () => {
       <Container>
         <main>
           <Switch>
+            <Route path='/' exact component={Home} />
             <Route path='/login' exact component={Login} />
             <Route path='/logout' exact component={Logout} />
             <Route path='/forgotPwd' exact component={ForgotPwd} />
             <Route path='/signup' exact component={Signup} />
-            <Route path='/' exact component={Home} />
             <Route path='/products' exact component={AllProducts} />
             <Route path='/sport' exact component={Sport} />
             <Route path='/electronics' exact component={Electronics} />

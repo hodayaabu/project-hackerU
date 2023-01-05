@@ -9,6 +9,7 @@ const MainNavigator = () => {
     const loggedIn = useSelector((state) => state.auth.loggedIn);
     const isAdmin = useSelector((state) => state.admin.isAdmin);
 
+
     return (
         <>
             <div className="logo">
