@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
+import { authActions } from "../store/auth.redux";
+import { adminActions } from "../store/admin.redux";
 
 //Import css
 import '../css/login_signup.css';
@@ -16,6 +19,9 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const Signup = () => {
     const history = useHistory();
+
+    //Redux
+    const dispatch = useDispatch();
 
     const [userName, setUserName] = useState('');
     const [validUserName, setValidUserName] = useState(false);
@@ -98,9 +104,26 @@ const Signup = () => {
         )
             .then((response) => {
                 toast('You have successfully registered');
+                axios
+                    .post("/users/login", { email: email, password: password })
+                    .then((response) => {
 
-                //Push to login page after registered 
-                history.push('/login');
+                        //Save token from server to local storage
+                        localStorage.setItem("token", response.data.token);
+                        localStorage.setItem("loggedIn", true);
+                        dispatch(authActions.login());
+
+                        //Check if this user is un admin
+                        if (response.data.admin) {
+                            dispatch(adminActions.admin());
+                            toast('you logged in as an admin')
+                        }
+
+                        //Push to home page
+                        history.push('/');
+
+                    })
+
             })
             .catch((err) => {
 

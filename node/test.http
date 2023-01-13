@@ -79,6 +79,10 @@ Content-Type: application/json
 GET {{local}}/cards/allCards
 
 
+### Delete all cards:
+DELETE  {{local}}/cards/allCards
+
+
 ### Get all cards by type
 GET {{local}}/cards/Other
 

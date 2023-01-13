@@ -18,7 +18,13 @@ const Home = () => {
     useEffect(() => {
         axios.get('/cards/allCards')
             .then((response) => {
-                const arr = [response.data[0], response.data[1], response.data[2]];
+                let arr = [];
+                if (response.data.length < 3) {
+                    arr = response.data;
+                } else {
+                    arr = [response.data[0], response.data[1], response.data[2]];
+                }
+
                 setCardsArr(arr);
             })
             .catch((err) => {
@@ -34,7 +40,6 @@ const Home = () => {
                 }
             });
     }, []);
-
 
     //When modal closed
     const handleClose = () => {

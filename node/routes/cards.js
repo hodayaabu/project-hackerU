@@ -314,5 +314,18 @@ router.get('/:type', async (req, res) => {
     }
 });
 
+//Delete all cards:
+router.delete('/allCards', async (req, res) => {
+    try {
+
+        await Card.remove();
+        res.send('all cards deleted');
+
+    } catch (err) {
+        console.log('err from get all cards:', err);
+        res.status(401).json({ err });
+    }
+});
+
 
 module.exports = router;
